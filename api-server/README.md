@@ -1,5 +1,7 @@
 # API Server
 
+This server side API project is cloned using [React - Udacity Nanodegree Project](https://github.com/udacity/reactnd-project-readable-starter.git).
+
 To install and start the API server, run the following commands in this directory:
 
 * `npm install`
