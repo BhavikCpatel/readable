@@ -16,6 +16,18 @@ const defaultData = {
       {
         name: 'udacity',
         path: 'udacity'
+      },
+      {
+        name: 'javascript',
+        path: 'javascript'
+      },
+      {
+        name: 'redux-thunk',
+        path: 'redux-thunk'
+      },
+      {
+        name: 'react-router',
+        path: 'react-router'
       }
   ]
 }
