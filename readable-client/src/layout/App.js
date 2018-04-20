@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../layout/Header';
-import Drawer from '../layout/Drawer';
-import Footer from '../layout/Footer';
-import AppRoutes from '../layout/AppRoutes';
+import Header from './Header';
+import Drawer from './Drawer';
+import Footer from './Footer';
+import AppRoutes from './AppRoutes';
 import { APP_TITLE } from '../constants';
 
 import '../styles/App.css';
