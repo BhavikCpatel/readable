@@ -4,6 +4,7 @@ import TextArea from './TextArea';
 import SelectWithOptions from './SelectWithOptions';
 import FormActionBar from './FormActionBar';
 import SectionHeader from './SectionHeader';
+
 const PostForm = props => (
   <div className="post-form">
     <div className="post-form-container mdl-grid">
@@ -28,7 +29,7 @@ const PostForm = props => (
               id="title"
               pattern=".+"
               title="PostTitle2"
-              largeField={true}
+              largeField
               errorMessage="Post Title is Missing"
             />
             <TextArea
@@ -37,7 +38,7 @@ const PostForm = props => (
               value="Text"
               errorMessage="Please add post content"
               rows="3"
-              largeField={true}
+              largeField
             />
             <div className="mdl-card__actions mdl-typography--text-center">
               <FormActionBar />

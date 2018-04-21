@@ -1,5 +1,6 @@
 import React from 'react';
 import CommentCounter from './CommentCounter';
+
 const PostContent = props => (
   <div className="mdl-card__supporting-text">
     <span className="post-detail-subitem mdl-typography--font-light mdl-typography--body-2">

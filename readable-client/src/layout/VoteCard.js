@@ -1,5 +1,6 @@
 import React from 'react';
 import IconButton from './IconButton';
+
 const VoteCard = props => (
   <React.Fragment>
     <IconButton id="vote-up" icon="thumb_up" iconColor="green-500" />

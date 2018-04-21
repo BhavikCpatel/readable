@@ -1,4 +1,5 @@
 import React from 'react';
+
 const CommentDetail = props => (
   <span className="mdl-list__item-primary-content">
     <span>Bryan Cranston</span>
