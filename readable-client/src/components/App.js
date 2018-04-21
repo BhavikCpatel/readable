@@ -3,14 +3,18 @@ import { BrowserRouter } from 'react-router-dom';
 import CategoryListContainer from './containers/CategoryListContainer';
 import { Footer } from './ui';
 import '../styles/App.css';
+import AppRoutes from './ui/AppRoutes';
 
 const App = () => (
-  <React.Fragment>
+  <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <BrowserRouter>
-      <CategoryListContainer />
+      <React.Fragment>
+        <CategoryListContainer />
+        <AppRoutes />
+      </React.Fragment>
     </BrowserRouter>
     <Footer />
-  </React.Fragment>
+  </div>
 );
 
 export default App;
