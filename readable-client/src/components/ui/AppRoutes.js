@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PostsListContainer from '../containers/PostsListContainer';
-import PostDetail from '../../layout/PostDetail';
+import PostDetailContainer from '../containers/PostDetailContainer';
 import PostForm from '../../layout/PostForm';
 
 const AppRoutes = () => (
@@ -13,7 +13,7 @@ const AppRoutes = () => (
         <Route exact path="/post/create" component={PostForm} />
         <Route exact path="/post/edit/:postId" component={PostForm} />
 
-        <Route exact path="/post/:postId" component={PostDetail} />
+        <Route exact path="/post/:postId" component={PostDetailContainer} />
         <Route
           render={() => (
             <div>

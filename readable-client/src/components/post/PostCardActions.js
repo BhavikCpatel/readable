@@ -1,5 +1,7 @@
 import React from 'react';
 import ColoredButton from '../ui/ColoredButton';
+
+import LinkButton from '../ui/LinkButton';
 import VoteCard from '../ui/VoteCard';
 import IconButton from '../ui/IconButton';
 
@@ -9,7 +11,7 @@ const PostCardActions = ({ postId, deletePost, isDetailCard }) => (
       {isDetailCard ? (
         <ColoredButton icon="add" id="add-comment" value="Add Comment" />
       ) : (
-        <ColoredButton id="read-more" value="More" />
+        <LinkButton id="read-more" postId={postId} value="More" />
       )}
       <div className="mdl-layout-spacer" />
       <VoteCard />
