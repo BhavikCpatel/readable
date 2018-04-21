@@ -4,8 +4,9 @@ import ColoredButton from '../ui/ColoredButton';
 import LinkButton from '../ui/LinkButton';
 import VoteCard from '../ui/VoteCard';
 import IconButton from '../ui/IconButton';
+import { CATEGORY } from '../../constants';
 
-const PostCardActions = ({ postId, deletePost, isDetailCard }) => (
+const PostCardActions = ({ postId, voteScore, deletePost, isDetailCard }) => (
   <React.Fragment>
     <div className="mdl-card__actions mdl-card--border">
       {isDetailCard ? (
@@ -14,7 +15,11 @@ const PostCardActions = ({ postId, deletePost, isDetailCard }) => (
         <LinkButton id="read-more" postId={postId} value="More" />
       )}
       <div className="mdl-layout-spacer" />
-      <VoteCard />
+      <VoteCard
+        voteCategory={CATEGORY.POST}
+        id={postId}
+        voteScore={voteScore}
+      />
     </div>
     <div className="mdl-card__menu">
       {isDetailCard && (

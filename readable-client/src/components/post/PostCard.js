@@ -12,6 +12,7 @@ const Post = ({ post, deletePost, isDetailCard = false }) =>
       <PostContent post={post} />
       <PostCardActions
         postId={post.id}
+        voteScore={post.voteScore}
         isDetailCard={isDetailCard}
         deletePost={deletePost}
       />
