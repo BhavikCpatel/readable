@@ -15,7 +15,7 @@ const categories = (state = {}, action) => {
         return Object.assign({}, state, { isLoading: true });
       case ACTION_STATUS.SUCCEEDED:
         return Object.assign({}, state, {
-          data: [{ name: 'all', path: '' }, ...action.payload.categories],
+          data: [...action.payload.categories, { name: 'all', path: '' }],
           error: null,
           isLoading: false,
         });

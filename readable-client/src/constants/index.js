@@ -1,5 +1,6 @@
 // Application Title
 export const APP_TITLE = '[readable]';
+export const HEADER_COLOR = 'blue-500';
 // API Server URL
 export const BASE_URL = 'http://localhost:3001';
 
