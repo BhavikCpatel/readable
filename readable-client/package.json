@@ -4,7 +4,18 @@
   "description": "Readable - Udacity project assignment based on React and Redux",
   "homepage": "https://github.com/BhavikCpatel/readable",
   "keywords": [
-    "react", "redux", "javascript", "es6", "es2015", "redux-thunk", "redux-logger", "mdl", "material design lite", "react-router", "udacity", "nanodegree"
+    "react",
+    "redux",
+    "javascript",
+    "es6",
+    "es2015",
+    "redux-thunk",
+    "redux-logger",
+    "mdl",
+    "material design lite",
+    "react-router",
+    "udacity",
+    "nanodegree"
   ],
   "license": "MIT",
   "author": {
@@ -19,6 +30,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "uuid": "^3.2.1"
   },
