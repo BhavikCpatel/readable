@@ -2,15 +2,20 @@ import React from 'react';
 import VoteCard from '../ui/VoteCard';
 import CommentActions from './CommentActions';
 import CommentDetail from './CommentDetail';
+import { CATEGORY } from '../../constants';
 
-const Comment = () => (
+const Comment = ({ comment }) => (
   <li className="mdl-list__item mdl-list__item--three-line comment-detail">
-    <CommentDetail />
+    <CommentDetail comment={comment} />
     <span className="mdl-list__item-secondary-content">
       <span className="vote-comment">
-        <VoteCard />
+        <VoteCard
+          voteCategory={CATEGORY.COMMENT}
+          id={comment.id}
+          voteScore={comment.voteScore}
+        />
       </span>
-      <CommentActions />
+      <CommentActions comment={comment} />
     </span>
   </li>
 );

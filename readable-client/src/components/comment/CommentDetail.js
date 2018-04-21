@@ -1,11 +1,12 @@
 import React from 'react';
 
-const CommentDetail = props => (
+const CommentDetail = ({ comment }) => (
   <span className="mdl-list__item-primary-content">
-    <span>Bryan Cranston</span>
+    <span>{comment.author}</span>
+
+    <span className="mdl-list__item-text-body">{comment.body}</span>
     <span className="mdl-list__item-text-body">
-      Bryan Cranston played the role of Walter in Breaking Bad. He is also Bryan
-      Cranston played the role of Walter in Breaking Bad. I'm sure
+      On {new Date(comment.timestamp).toLocaleString()}
     </span>
   </span>
 );

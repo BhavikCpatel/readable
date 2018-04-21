@@ -85,7 +85,9 @@ section .posts-container {
   padding: 12px;
   padding-bottom: 50px;
 }
-
+#vote-down {
+  margin-left: 3px;
+}
 .post-comments-section .mdl-card__supporting-text {
   padding-bottom: 0;
 }

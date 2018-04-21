@@ -5,9 +5,12 @@ import SectionHeader from '../ui/SectionHeader';
 
 const PostCommentsList = props => (
   <React.Fragment>
-    <SectionHeader color="grey-600" title="Comments (30)" />
+    <SectionHeader
+      color="grey-600"
+      title={`Comments (${props.comments && props.comments.length})`}
+    />
     <div className="mdl-card__supporting-text">
-      <CommentsList />
+      <CommentsList comments={props.comments} />
     </div>
   </React.Fragment>
 );
