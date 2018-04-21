@@ -1,8 +1,9 @@
 import React from 'react';
 import Post from './Post';
+
 const PostsList = props => (
-  <section class="posts-container">
-    <div class="post-card-container mdl-grid">
+  <section className="posts-container">
+    <div className="post-card-container mdl-grid">
       <Post />
       <Post />
       <Post />

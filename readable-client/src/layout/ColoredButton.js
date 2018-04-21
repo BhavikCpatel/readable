@@ -5,7 +5,7 @@ const ColoredButton = props => (
     id={props.id}
     className="mdl-button mdl-js-button mdl-js-ripple-effect  mdl-button--colored"
   >
-    {props.icon && <i class="material-icons">{props.icon}</i>}
+    {props.icon && <i className="material-icons">{props.icon}</i>}
     {props.value}
   </button>
 );

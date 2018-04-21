@@ -13,7 +13,7 @@ const TextArea = props => (
         rows={props.rows}
         id={props.id}
       />
-      <label className="mdl-textfield__label" for="sample5">
+      <label className="mdl-textfield__label" htmlFor="sample5">
         {props.title}
       </label>
       <span className="mdl-textfield__error">{props.errorMessage}</span>

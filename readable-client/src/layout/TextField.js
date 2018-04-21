@@ -13,7 +13,7 @@ const TextField = props => (
         pattern={props.pattern}
         id={props.id}
       />
-      <label className="mdl-textfield__label" for={props.id}>
+      <label className="mdl-textfield__label" htmlFor={props.id}>
         {props.title}
       </label>
       <span className="mdl-textfield__error">{props.errorMessage}</span>
