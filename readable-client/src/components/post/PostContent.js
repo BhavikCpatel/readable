@@ -4,9 +4,7 @@ import CommentCounter from '../comment/CommentCounter';
 const PostContent = ({ post }) => (
   <div className="mdl-card__supporting-text">
     <span className="post-detail-subitem mdl-typography--font-light mdl-typography--subhead">
-      <div className="post-contents">
-        {post.body} sfsdf sdfsdfsd sdfsdf sdf sdf sdf sdfsdf sdf sdfs sdf sdfsdf
-      </div>
+      <div className="post-contents">{post.body}</div>
     </span>
     <span className="post-detail-subitem mdl-typography--font-light mdl-typography--subhead test">
       <CommentCounter />
