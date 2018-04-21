@@ -2,7 +2,7 @@ import React from 'react';
 import ColoredButton from '../ui/ColoredButton';
 
 import LinkButton from '../ui/LinkButton';
-import VoteCard from '../ui/VoteCard';
+import VoteCardContainer from '../containers/VoteCardContainer';
 import IconButton from '../ui/IconButton';
 import { CATEGORY } from '../../constants';
 
@@ -15,7 +15,7 @@ const PostCardActions = ({ postId, voteScore, deletePost, isDetailCard }) => (
         <LinkButton id="read-more" postId={postId} value="More" />
       )}
       <div className="mdl-layout-spacer" />
-      <VoteCard
+      <VoteCardContainer
         voteCategory={CATEGORY.POST}
         id={postId}
         voteScore={voteScore}

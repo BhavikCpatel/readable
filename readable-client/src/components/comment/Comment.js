@@ -1,5 +1,5 @@
 import React from 'react';
-import VoteCard from '../ui/VoteCard';
+import VoteCardContainer from '../containers/VoteCardContainer';
 import CommentActions from './CommentActions';
 import CommentDetail from './CommentDetail';
 import { CATEGORY } from '../../constants';
@@ -9,7 +9,7 @@ const Comment = ({ comment }) => (
     <CommentDetail comment={comment} />
     <span className="mdl-list__item-secondary-content">
       <span className="vote-comment">
-        <VoteCard
+        <VoteCardContainer
           voteCategory={CATEGORY.COMMENT}
           id={comment.id}
           voteScore={comment.voteScore}
