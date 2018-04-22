@@ -6,7 +6,11 @@ const CommentsList = props => {
     return (
       <ul className="comments-list mdl-list">
         {props.comments.map(comment => (
-          <Comment key={comment.id} comment={comment} />
+          <Comment
+            deleteComment={props.deleteComment}
+            key={comment.id}
+            comment={comment}
+          />
         ))}
       </ul>
     );

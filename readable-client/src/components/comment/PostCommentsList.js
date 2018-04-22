@@ -10,7 +10,10 @@ const PostCommentsList = props => (
       title={`Comments (${props.comments && props.comments.length})`}
     />
     <div className="mdl-card__supporting-text">
-      <CommentsList comments={props.comments} />
+      <CommentsList
+        deleteComment={props.deleteComment}
+        comments={props.comments}
+      />
     </div>
   </React.Fragment>
 );

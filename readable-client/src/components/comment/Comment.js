@@ -4,7 +4,7 @@ import CommentActions from './CommentActions';
 import CommentDetail from './CommentDetail';
 import { CATEGORY } from '../../constants';
 
-const Comment = ({ comment }) => (
+const Comment = ({ comment, deleteComment }) => (
   <li className="mdl-list__item mdl-list__item--three-line comment-detail">
     <CommentDetail comment={comment} />
     <span className="mdl-list__item-secondary-content">
@@ -15,7 +15,7 @@ const Comment = ({ comment }) => (
           voteScore={comment.voteScore}
         />
       </span>
-      <CommentActions comment={comment} />
+      <CommentActions deleteComment={deleteComment} comment={comment} />
     </span>
   </li>
 );
