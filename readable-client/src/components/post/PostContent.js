@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentCounter from '../comment/CommentCounter';
+import CommentCounter from './CommentCounter';
 
 const PostContent = ({ post }) => (
   <div className="mdl-card__supporting-text">
@@ -7,7 +7,7 @@ const PostContent = ({ post }) => (
       <div className="post-contents">{post.body}</div>
     </span>
     <span className="post-detail-subitem mdl-typography--font-light mdl-typography--subhead test">
-      <CommentCounter />
+      <CommentCounter comments={post.commentCount} />
     </span>
     <span className="post-detail-subitem mdl-typography--caption-color-contrast">
       Posted On: {new Date(post.timestamp).toLocaleString()}

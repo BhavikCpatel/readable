@@ -8,7 +8,7 @@ const CommentCounter = props => (
       </span>
       <i
         className="material-icons mdl-color-text--primary mdl-badge"
-        data-badge="20"
+        data-badge={props.comments}
       >
         comment
       </i>
