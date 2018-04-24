@@ -7,7 +7,7 @@ const Drawer = props => (
       {props.appTitle}
     </span>
     <div className="app-drawer-separator" />
-    <NavBar items={props.items} />
+    <NavBar items={props.items.data} />
   </div>
 );
 

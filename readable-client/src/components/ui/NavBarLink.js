@@ -5,7 +5,7 @@ const NavBarLink = ({ path, title }) => (
   <NavLink
     exact
     className="mdl-navigation__link mdl-typography--text-uppercase"
-    activeClassName="mdl-color--orange"
+    activeClassName="mdl-color--orange-400"
     to={`/${path}`}
   >
     {title}

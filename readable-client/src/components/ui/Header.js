@@ -13,7 +13,7 @@ const Header = props => (
       </span>
       <div className="app-header-spacer mdl-layout-spacer" />
       <div className="app-navigation-container">
-        <NavBar items={props.items} />
+        <NavBar items={props.items.data} />
       </div>
       <span className="app-mobile-title mdl-layout-title">
         {props.appTitle}
