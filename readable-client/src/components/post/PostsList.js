@@ -41,6 +41,18 @@ const PostsList = ({
             deletePost={deletePost}
           />
         ))}
+      {posts &&
+        posts.length === 0 &&
+        !isLoading &&
+        !error && (
+          <div className="mdl-grid">
+            <div className="mdl-cell mdl-cell--12-col">
+              <span className="mdl-typography--headline mdl-typography--text-center">
+                Welcome!, Be brave and add a new post using [Add Post] button
+              </span>
+            </div>
+          </div>
+        )}
     </div>
     <div className="mdl-grid">
       <div className="mdl-cell mdl-cell--4-col">
