@@ -10,7 +10,12 @@ const PostCardActions = ({ postId, voteScore, deletePost, isDetailCard }) => (
   <React.Fragment>
     <div className="mdl-card__actions mdl-card--border">
       {isDetailCard ? (
-        <ColoredButton icon="add" id="add-comment" value="Add Comment" />
+        <LinkButton
+          icon="edit"
+          id="editPost"
+          postId={`edit/${postId}`}
+          value=" Edit"
+        />
       ) : (
         <LinkButton id="read-more" postId={postId} value="More" />
       )}
@@ -22,9 +27,6 @@ const PostCardActions = ({ postId, voteScore, deletePost, isDetailCard }) => (
       />
     </div>
     <div className="mdl-card__menu">
-      {isDetailCard && (
-        <IconButton icon="edit" id="editPost" iconColor="grey-200" />
-      )}
       <IconButton
         icon="delete"
         id="deletePost"

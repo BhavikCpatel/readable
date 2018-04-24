@@ -31,6 +31,8 @@ class PostsListContainer extends React.Component {
         deletePost={this.props.deletePost}
         isLoading={this.props.isLoading}
         error={this.props.error}
+        currentSortOrder={`${this.props.sortBy}-${this.props.sortOrder}`}
+        orderPosts={this.props.orderPosts}
       />
     );
   }
@@ -59,6 +61,7 @@ const mapStateToProps = ({ posts, ui }, ownProps) => {
     category: posts.postCategory,
     error: posts.error,
     sortBy: ui.orderBy,
+    sortOrder: ui.orderType || 'desc',
   };
 };
 
