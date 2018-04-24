@@ -10,16 +10,14 @@
   font-size: 24px;
   font-style: italic;
 }
-
 .app-title-footer {
   color: white;
   font-size: 18px;
   margin-top: 8px;
 }
-
 .app-navigation-container .mdl-navigation__link:hover {
   border-bottom: 3px solid #f3aa66;
-  color: #f3aa66;
+  color: hsl(61, 98%, 55%);
 }
 
 .icon-style {
@@ -41,6 +39,18 @@ section .posts-container {
   flex-direction: row;
 }
 
+#comment-form .mdl-card__menu {
+  top: 6px;
+  right: 6px;
+}
+#comment-form .mdl-card__supporting-text {
+  padding-bottom: 2px;
+}
+
+#post-form .mdl-card__menu {
+  top: 6px;
+  right: 6px;
+}
 /*.post-card .mdl-card__media {
   overflow: hidden;
   height: 48px;
@@ -158,6 +168,10 @@ section .posts-container {
   align-items: center;
   position: absolute;
   bottom: 0;
+}
+#comment-form .mdl-card__supporting-text {
+  height: auto;
+  margin-bottom: 46px;
 }
 
 .app-header .material-icons {

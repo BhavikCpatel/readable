@@ -41,16 +41,19 @@ export const deleteComment = commentId => dispatch => {
 
 export const editComment = comment => dispatch => {
   dispatch(requestEditComment(comment));
-  api
+  return api
     .updateComment(comment, editCommentSucceeded, editCommentFailed)
-    .then(action => dispatch(action));
-  // .then(payload => dispatch(editCommentSucceeded({ payload })))
-  // .catch(error => dispatch(editCommentFailed(error)));
+    .then(action => {
+      dispatch(action);
+      return action.error
+        ? Promise.reject(comment.id)
+        : Promise.resolve(comment.id);
+    });
 };
 
 export const addComment = comment => dispatch => {
   dispatch(requestAddComment(comment));
-  api
+  return api
     .saveComment(comment, addCommentSucceeded, addCommentFailed)
     .then(action => {
       dispatch(action);
@@ -60,5 +63,8 @@ export const addComment = comment => dispatch => {
           requestSetCommentCnt({ postId: action.payload.parentId, value: 1 }),
         );
       }
+      return action.error
+        ? Promise.reject(comment.id)
+        : Promise.resolve(comment.id);
     });
 };

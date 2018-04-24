@@ -3,9 +3,23 @@ import ColoredButton from './ColoredButton';
 
 const FormActionBar = props => (
   <React.Fragment>
-    <ColoredButton icon="save" id="saveButton" value=" Save" />
+    <ColoredButton
+      icon="clear"
+      id="clearButton"
+      type="reset"
+      value=" Clear"
+      onClick={props.onClear}
+    />
+    <ColoredButton icon="save" id="saveButton" type="submit" value=" Save" />
 
-    <ColoredButton icon="clear" id="clearButton" value=" Clear" />
+    {props.onCancel && (
+      <ColoredButton
+        icon="cancel"
+        id="cancelButton"
+        value=" Cancel"
+        onClick={props.onCancel}
+      />
+    )}
   </React.Fragment>
 );
 

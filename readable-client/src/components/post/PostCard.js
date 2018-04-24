@@ -4,7 +4,7 @@ import PostCardCategory from './PostCardCategory';
 import PostCardTitle from './PostCardTitle';
 import PostCardActions from './PostCardActions';
 
-const Post = ({ post, deletePost, isDetailCard = false }) =>
+const Post = ({ post, deletePost, isDetailCard = false, onCommentAdd }) =>
   post && (
     <React.Fragment>
       <PostCardCategory category={post.category} />
@@ -15,6 +15,7 @@ const Post = ({ post, deletePost, isDetailCard = false }) =>
         voteScore={post.voteScore}
         isDetailCard={isDetailCard}
         deletePost={deletePost}
+        onCommentAdd={onCommentAdd}
       />
     </React.Fragment>
   );

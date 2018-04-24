@@ -8,6 +8,7 @@ const CommentsList = props => {
         {props.comments.map(comment => (
           <Comment
             deleteComment={props.deleteComment}
+            editComment={props.editComment}
             key={comment.id}
             comment={comment}
           />

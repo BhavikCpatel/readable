@@ -10,7 +10,12 @@ const CommentActions = props => (
       onClick={() => props.deleteComment(props.comment.id)}
     />
 
-    <IconButton id="edit" icon="edit" iconColor="blue-400" />
+    <IconButton
+      onClick={props.onEditRequest}
+      id="edit"
+      icon="edit"
+      iconColor="blue-400"
+    />
   </React.Fragment>
 );
 
