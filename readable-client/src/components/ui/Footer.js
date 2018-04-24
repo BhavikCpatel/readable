@@ -8,13 +8,18 @@ const Footer = props => (
     <div className="mdl-mini-footer__right-section">
       <ul className="mdl-mini-footer__link-list">
         <li>
-          <a href="https://getmdl.io/" alt="Material Design Lite framework">
+          <a
+            href="https://getmdl.io/"
+            target="_blank"
+            alt="Material Design Lite framework"
+          >
             Material Design Lite
           </a>
         </li>
         <li>
           <a
             href="https://www.udacity.com/course/react-nanodegree--nd019"
+            target="_blank"
             alt="React Nanodegree Course - Udacity"
           >
             React Nanodegree
@@ -22,7 +27,8 @@ const Footer = props => (
         </li>
         <li>
           <a
-            href="https://www.udacity.com/course/react-nanodegree--nd019"
+            href="https://github.com/BhavikCpatel/readable"
+            target="_blank"
             alt="Readable project source code - GitHub"
           >
             Source Code
