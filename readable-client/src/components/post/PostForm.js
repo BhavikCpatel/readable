@@ -5,7 +5,7 @@ import TextField from '../ui/TextField';
 import TextArea from '../ui/TextArea';
 import FormActionBar from '../ui/FormActionBar';
 import SelectWithOptions from '../ui/SelectWithOptions';
-import IconButton from '../ui/IconButton';
+import ColoredButton from '../ui/ColoredButton';
 
 export default class PostForm extends React.Component {
   constructor(props) {
@@ -78,13 +78,22 @@ export default class PostForm extends React.Component {
   }
 
   render() {
-    const { post } = this.props;
+    const { post, history } = this.props;
 
     const isEditMode = !!post;
 
     return (
       <div className="post-form">
         <div className="post-form-container mdl-grid">
+          <div className="mdl-cell mdl-cell--12-col">
+            <ColoredButton
+              icon="keyboard_arrow_left"
+              color="pink-400"
+              value=" Back"
+              id="goback"
+              onClick={() => history.goBack()}
+            />
+          </div>
           <div className="mdl-cell mdl-cell--8-col mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
             <SectionHeader
               color="grey-600"
