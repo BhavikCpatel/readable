@@ -29,7 +29,6 @@ class CommentForm extends React.Component {
   }
 
   handleInputChange(event) {
-    
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -89,44 +88,43 @@ class CommentForm extends React.Component {
       <div className="comment-form mdl-grid">
         <div className="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
           <form id="comment-form" onSubmit={e => this.handleFormSubmit(e)}>
-            <div className="mdl-card">
-              <SectionHeader color="blue-600" title="Add your comment" />
-              <div className="mdl-card__supporting-text">
-                <TextField
-                  id="author"
-                  required
-                  value={this.state.author}
-                  pattern="^[a-zA-Z\s]+$"
-                  title="Your Name"
-                  disabled={this.state.mode === 'edit'}
-                  onChange={e => this.handleInputChange(e)}
-                  errorMessage="Your name is missing"
-                />
-                <TextArea
-                  id="commentBody"
-                  title="Type your comment here..."
-                  pattern="/.+/"
-                  required
-                  errorMessage="Please add post content"
-                  rows="3"
-                  value={this.state.commentBody}
-                  onChange={e => this.handleInputChange(e)}
-                  largeField
-                />
-              </div>
-              <div className="mdl-card__actions">
-                <span className="mdl-layout-spacer" />
+            <TextField
+              id="author"
+              required
+              value={this.state.author}
+              pattern="^[a-zA-Z\s]+$"
+              title="Your Name"
+              fieldCaption="Author:"
+              disabled={this.state.mode === 'edit'}
+              onChange={e => this.handleInputChange(e)}
+              errorMessage="Your name is missing"
+            />
+
+            <TextArea
+              id="commentBody"
+              title="Type your comment here..."
+              pattern="/.+/"
+              required
+              errorMessage="Please add your comment here"
+              rows="3"
+              value={this.state.commentBody}
+              fieldCaption="Your Comments:"
+              onChange={e => this.handleInputChange(e)}
+              largeField
+            />
+
+            <div className="mdl-grid">
+              <div className="mdl-cell mdl-cell--12-col mdl-typography--text-right">
                 <FormActionBar onClear={() => this.resetCommentForm()} />
-                <span className="mdl-layout-spacer" />
               </div>
-              <div className="mdl-card__menu">
-                <IconButton
-                  icon="close"
-                  id="closeForm"
-                  iconColor="grey-200"
-                  onClick={onClose}
-                />
-              </div>
+            </div>
+            <div className="mdl-card__menu">
+              <IconButton
+                icon="close"
+                id="closeForm"
+                iconColor="primary"
+                onClick={onClose}
+              />
             </div>
           </form>
         </div>

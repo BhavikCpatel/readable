@@ -205,15 +205,22 @@ section .posts-container {
 .post-form .mdl-card__title {
   color: white;
 }
-.post-form .mdl-grid {
+.post-form .mdl-grid,
+.comment-form .mdl-cell {
   padding: 2px;
 }
-.post-form .mdl-cell {
+.post-form .mdl-cell,
+.comment-form .mdl-cell {
   margin: 1px;
 }
+
 .post-form .mdl-textfield {
   padding: 0;
   padding-bottom: 20px;
+}
+
+.comment-form .mdl-textfield {
+  padding: 4px 0;
 }
 .btn {
   border: 0;

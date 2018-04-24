@@ -16,11 +16,7 @@ const CommentsList = props => {
       </ul>
     );
   }
-  return (
-    <div>
-      Be Brave!, Be the first one to comment on this post! -Link to Add Comment
-    </div>
-  );
+  return <div>Be Brave!, Be the first one to comment on this post!</div>;
 };
 
 export default CommentsList;

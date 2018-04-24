@@ -50,29 +50,24 @@ class EditComment extends React.Component {
 
   render() {
     return (
-      <span className="mdl-list__item-primary-content">
-        <span>{this.props.comment.author}</span>
-
-        <span className="mdl-list__item-text-body">
-          <form id="editcomment-form" onSubmit={e => this.handleFormSubmit(e)}>
-            <TextArea
-              id="commentBody"
-              title={this.props.comment.body}
-              pattern="/.+/"
-              required
-              errorMessage="Please add comment"
-              rows="3"
-              value={this.state.commentBody}
-              onChange={e => this.handleInputChange(e)}
-              largeField
-            />
-            <FormActionBar
-              onClear={() => this.resetCommentForm()}
-              onCancel={this.props.onCancel}
-            />
-          </form>
-        </span>
-      </span>
+      <form id="editcomment-form" onSubmit={e => this.handleFormSubmit(e)}>
+        <TextArea
+          id="commentBody"
+          title={this.props.comment.body}
+          pattern="/.+/"
+          required
+          errorMessage="Please add comment"
+          rows="3"
+          fieldCaption="Comment:"
+          value={this.state.commentBody}
+          onChange={e => this.handleInputChange(e)}
+          largeField
+        />
+        <FormActionBar
+          onClear={() => this.resetCommentForm()}
+          onCancel={this.props.onCancel}
+        />
+      </form>
     );
   }
 }
