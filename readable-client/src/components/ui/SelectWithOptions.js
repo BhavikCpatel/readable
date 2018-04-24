@@ -9,25 +9,45 @@ const SelectWithOptions = props => {
   categoryOptions.unshift(<option key="none" value="" />);
 
   return (
-    <div id={`${props.id}-field`}>
-      <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <select
-          className="mdl-textfield__input"
-          id={props.id}
-          name={props.id}
-          defaultValue={props.value}
-          onChange={e => {
-            e.target.required = true;
+    <div id={`${props.id}-field`} className="mdl-grid">
+      <div className="mdl-cell mdl-cell--12-col mdl-color-text--primary mdl-typography--caption">
+        {props.fieldCaption}
+      </div>
+      <div className="mdl-cell mdl-cell--12-col">
+        <div className="mdl-textfield mdl-js-textfield">
+          <select
+            className="mdl-textfield__input"
+            id={props.id}
+            name={props.id}
+            defaultValue={props.value}
+            onChange={e => {
+              e.target.required = true;
+              e.target.parentElement.setAttribute(
+                'class',
+                `${e.target.parentElement.className
+                  .replace('is-dirty', '')
+                  .replace('is-invalid', '')} is-dirty ${e.target.value ===
+                  '' && 'is-invalid'}`,
+              );
+              props.onChange(e);
+            }}
+            onFocus={e =>
+              (e.target.parentElement.className = `${
+                e.target.parentElement.className
+              } is-focused is-upgraded`)
+            }
+            onBlur={e =>
+              (e.target.parentElement.className = e.target.parentElement.className.replace(
+                'is-focused is-upgraded',
+                '',
+              ))
+            }
+          >
+            {categoryOptions}
+          </select>
 
-            props.onChange(e);
-          }}
-        >
-          {categoryOptions}
-        </select>
-        <label className="mdl-textfield__label" htmlFor={props.id}>
-          {props.title}
-        </label>
-        <span className="mdl-textfield__error">{props.errorMessage}</span>
+          <span className="mdl-textfield__error">{props.errorMessage}</span>
+        </div>
       </div>
     </div>
   );

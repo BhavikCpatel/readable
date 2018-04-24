@@ -205,6 +205,16 @@ section .posts-container {
 .post-form .mdl-card__title {
   color: white;
 }
+.post-form .mdl-grid {
+  padding: 2px;
+}
+.post-form .mdl-cell {
+  margin: 1px;
+}
+.post-form .mdl-textfield {
+  padding: 0;
+  padding-bottom: 20px;
+}
 .btn {
   border: 0;
   font-size: 14px;

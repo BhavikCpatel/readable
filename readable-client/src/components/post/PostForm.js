@@ -45,15 +45,21 @@ export default class PostForm extends React.Component {
       // TOOD: Validation Handler
     }
     if (this.state.id) {
-      this.props.editPost({
-        id: this.state.id,
-        title: this.state.title,
-        body: this.state.body,
-      });
+      this.props
+        .editPost({
+          id: this.state.id,
+          title: this.state.title,
+          body: this.state.body,
+        })
+        .then(() => {
+          alert('updated');
+          this.props.history.goBack();
+        });
     } else {
+      const id = generateUniqueId();
       this.props
         .addPost({
-          id: generateUniqueId(),
+          id,
           title: this.state.title,
           author: this.state.author,
           body: this.state.body,
@@ -62,7 +68,7 @@ export default class PostForm extends React.Component {
         })
         .then(() => {
           alert('saved');
-          this.props.history.goBack();
+          this.props.history.push(`/post/${id}`);
         });
     }
     // TOOD: Go back to Posts List Page.
@@ -108,8 +114,22 @@ export default class PostForm extends React.Component {
               >
                 {isEditMode ? (
                   <div>
-                    <p>Category: {this.state.category}</p>
-                    <p>Author: {this.state.author}</p>
+                    <p>
+                      <span className="mdl-color-text--primary mdl-typography--caption">
+                        Category:{' '}
+                      </span>
+                      <span className="mdl-typography--subhead">
+                        {this.state.category}
+                      </span>
+                    </p>
+                    <p>
+                      <span className="mdl-color-text--primary mdl-typography--caption">
+                        Author:{' '}
+                      </span>
+                      <span className="mdl-typography--subhead">
+                        {this.state.author}
+                      </span>
+                    </p>
                   </div>
                 ) : (
                   <React.Fragment>
@@ -120,6 +140,7 @@ export default class PostForm extends React.Component {
                       options={this.props.categories}
                       value={this.state.category}
                       required="required"
+                      fieldCaption="Category:"
                       onChange={e => this.handleInputChange(e)}
                     />
 
@@ -129,6 +150,8 @@ export default class PostForm extends React.Component {
                       onChange={e => this.handleInputChange(e)}
                       title="Your Name"
                       required="required"
+                      value={this.state.author}
+                      fieldCaption="Your Name:"
                       errorMessage="Your name is missing"
                     />
                   </React.Fragment>
@@ -139,8 +162,9 @@ export default class PostForm extends React.Component {
                   pattern=".+"
                   title="Post Title"
                   required="required"
-                  value={this.state.title}
                   errorMessage="Post Title is Missing"
+                  value={this.state.title}
+                  fieldCaption="Post Title:"
                   onChange={e => this.handleInputChange(e)}
                   largeField
                 />
@@ -150,9 +174,10 @@ export default class PostForm extends React.Component {
                   title="Type your post contents here..."
                   errorMessage="Please add post contents"
                   rows="3"
-                  value={this.state.body}
                   onChange={e => this.handleInputChange(e)}
                   required="required"
+                  fieldCaption="Post Contents:"
+                  value={this.state.body}
                   largeField
                 />
                 <div className="mdl-card__actions mdl-typography--text-center">
