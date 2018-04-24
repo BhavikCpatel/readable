@@ -205,6 +205,15 @@ section .posts-container {
 .post-form .mdl-card__title {
   color: white;
 }
+.btn {
+  border: 0;
+  font-size: 14px;
+  font-weight: 500px;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+li.menu-item:hover {
+  background-color: pink;
+}
 
 .post-form .mdl-grid {
   align-items: center;

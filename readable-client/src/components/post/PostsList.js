@@ -20,13 +20,13 @@ const PostsList = ({
     <div className="post-card-container mdl-grid">
       {!isLoading && (
         <React.Fragment>
-          <div className="mdl-cell mdl-cell--2-col">
+          <div className="mdl-cell mdl-cell--4-col">
             <PostsOrderMenu
               currentSortOrder={currentSortOrder}
               orderPosts={orderPosts}
             />
           </div>
-          <div className="mdl-cell mdl-cell--2-col mdl-cell--4-offset-tablet mdl-cell--8-offset-desktop mdl-typography--text-right">
+          <div className="mdl-cell mdl-cell--4-col mdl-cell--4-offset-desktop mdl-typography--text-right">
             <AddPostButton />
           </div>
         </React.Fragment>
