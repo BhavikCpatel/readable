@@ -1,6 +1,4 @@
 import React from 'react';
-import ColoredButton from '../ui/ColoredButton';
-
 import LinkButton from '../ui/LinkButton';
 import VoteCardContainer from '../containers/VoteCardContainer';
 import IconButton from '../ui/IconButton';

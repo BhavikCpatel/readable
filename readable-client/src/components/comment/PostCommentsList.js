@@ -28,7 +28,6 @@ class PostCommentsList extends React.Component {
       addComment,
       editComment,
       isLoading,
-      error,
     } = this.props;
 
     return (

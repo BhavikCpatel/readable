@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { generateUniqueId } from '../../utils';
-import SectionHeader from '../ui/SectionHeader';
 import TextField from '../ui/TextField';
 import TextArea from '../ui/TextArea';
 import FormActionBar from '../ui/FormActionBar';
@@ -83,7 +82,7 @@ class CommentForm extends React.Component {
     this.openCommentForm('edit', comment.parentId, comment);
   }
   render() {
-    const { onClose, addComment } = this.props;
+    const { onClose } = this.props;
     return (
       <div className="comment-form mdl-grid">
         <div className="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
