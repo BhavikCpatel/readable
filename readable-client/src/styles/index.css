@@ -17,3 +17,7 @@ body {
   background-color: #dcedc8;
   color: #111;
 }
+
+a:hover {
+  color: #faf8f8fa;
+}
