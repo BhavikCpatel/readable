@@ -16,8 +16,20 @@ body {
 ::selection {
   background-color: #dcedc8;
   color: #111;
+  text-decoration-line: none;
+}
+a:link,
+a:visited {
+  color: rgb(158, 158, 158);
+  text-decoration-line: none;
 }
 
 a:hover {
   color: #faf8f8fa;
+  text-decoration-line: none;
+}
+a:active {
+  color: rgb(158, 158, 158);
+
+  text-decoration-line: none;
 }
