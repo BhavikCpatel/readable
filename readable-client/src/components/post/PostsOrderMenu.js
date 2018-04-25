@@ -5,13 +5,13 @@ const PostsOrderMenu = ({ currentSortOrder, orderPosts }) => (
   <React.Fragment>
     <div className="dropdown">
       <div className="btn-group">
-        <a
-          href="javascript:void(0);"
+        <button
+          onClick={e => e.preventDefault()}
           tabIndex="0"
-          className="btn mdl-button mdl-button--raised mdl-color--pink-600  mdl-button--colored dropdown-toggle"
+          className="btn mdl-button  mdl-js-button mdl-button--raised mdl-color--pink-600  mdl-button--colored dropdown-toggle"
         >
           Sort Posts <i className="material-icons">sort</i>
-        </a>
+        </button>
 
         <ul className="menu">
           {Array.from(sortOrderMap, sortItem => {
