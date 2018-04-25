@@ -5,7 +5,9 @@
 /*.app-header {
   overflow: visible;
 } */
-
+.mdl-layout__content {
+  flex: 1 0 auto;
+}
 .app-title {
   font-size: 24px;
   font-style: italic;
@@ -37,6 +39,19 @@
 section .posts-container {
   display: flex;
   flex-direction: row;
+}
+
+.notification-container {
+  display: flex;
+  flex-direction: row;
+  height: 96px;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.notification-container .message {
+  flex: 1;
+  padding: 4px;
 }
 
 #comment-form .mdl-card__menu {
