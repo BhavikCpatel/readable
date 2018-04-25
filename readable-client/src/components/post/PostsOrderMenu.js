@@ -20,6 +20,7 @@ const PostsOrderMenu = ({ currentSortOrder, orderPosts }) => (
 
             return (
               <li
+                key={sortItem[0]}
                 className={`menu-item ${
                   currentSortOrder === sortItem[0] ? 'mdl-color--blue-300' : ''
                 }`}
