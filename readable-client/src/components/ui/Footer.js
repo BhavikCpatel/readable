@@ -3,7 +3,18 @@ import React from 'react';
 const Footer = props => (
   <footer className="app-footer mdl-mini-footer">
     <div className="mdl-mini-footer__left-section mdl-typography--text-center">
-      <div className="app-title-footer">{props.appTitle}</div>
+      <ul className="mdl-mini-footer__link-list">
+        <li>
+          <a
+            href="https://github.com/BhavikCpatel"
+            target="_blank"
+            rel="noopener noreferrer"
+            alt="Bhavik Patel - GitHub Page"
+          >
+            Developed By: Bhavik Patel
+          </a>
+        </li>
+      </ul>
     </div>
     <div className="mdl-mini-footer__right-section">
       <ul className="mdl-mini-footer__link-list">
