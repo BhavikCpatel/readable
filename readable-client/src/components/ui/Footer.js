@@ -11,6 +11,7 @@ const Footer = props => (
           <a
             href="https://getmdl.io/"
             target="_blank"
+            rel="noopener noreferrer"
             alt="Material Design Lite framework"
           >
             Material Design Lite
@@ -20,6 +21,7 @@ const Footer = props => (
           <a
             href="https://www.udacity.com/course/react-nanodegree--nd019"
             target="_blank"
+            rel="noopener noreferrer"
             alt="React Nanodegree Course - Udacity"
           >
             React Nanodegree
@@ -29,6 +31,7 @@ const Footer = props => (
           <a
             href="https://github.com/BhavikCpatel/readable"
             target="_blank"
+            rel="noopener noreferrer"
             alt="Readable project source code - GitHub"
           >
             Source Code
