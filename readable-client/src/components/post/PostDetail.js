@@ -3,15 +3,11 @@ import PostCommentsContainer from '../containers/PostCommentsContainer';
 import PostCard from './PostCard';
 import AddPostButton from './AddPostButton';
 import ColoredButton from '../ui/ColoredButton';
+import Loader from '../ui/Loader';
 
 const PostDetail = ({ post, deletePost, history, isLoading, error }) => {
   if (isLoading) {
-    return (
-      <div className="mdl-typography--display-1">
-        Loading Post Detail...{' '}
-        <span className="mdl-spinner mdl-js-spinner is-active" />
-      </div>
-    );
+    return <Loader />;
   } else if (error) {
     return <div>Oops! something unexpected happened. Please try again!</div>;
   }

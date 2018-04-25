@@ -3,6 +3,7 @@ import Post from './Post';
 import AddPostButton from './AddPostButton';
 import PostsOrderMenu from './PostsOrderMenu';
 import { sortOrderMap } from '../../utils';
+import Loader from '../ui/Loader';
 
 const PostsList = ({
   posts,
@@ -13,10 +14,8 @@ const PostsList = ({
   orderPosts,
 }) => (
   <section className="posts-container">
-    <div className="mdl-typography--display-1">
-      Posts
-      {isLoading && <span className="mdl-spinner mdl-js-spinner is-active" />}
-    </div>
+    <div className="mdl-typography--display-1">Posts</div>
+    {isLoading && <Loader />}
     <div className="post-card-container mdl-grid">
       {!isLoading && (
         <React.Fragment>

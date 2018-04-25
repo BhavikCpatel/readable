@@ -3,6 +3,7 @@ import ColoredButton from '../ui/ColoredButton';
 import CommentsList from '../comment/CommentsList';
 import SectionHeader from '../ui/SectionHeader';
 import CommentForm from './CommentForm';
+import Loader from '../ui/Loader';
 
 class PostCommentsList extends React.Component {
   state = {
@@ -34,11 +35,9 @@ class PostCommentsList extends React.Component {
       <React.Fragment>
         <SectionHeader
           color="grey-600"
-          title={
-            isLoading
-              ? 'Loading Comments...'
-              : `Comments (${comments && comments.length})`
-          }
+          title={`Comments (${
+            isLoading ? ' Loading... ' : comments ? comments.length : 0
+          })`}
         />
 
         {this.state.showCommentForm && (
@@ -54,7 +53,7 @@ class PostCommentsList extends React.Component {
         )}
 
         {isLoading ? (
-          <div className="mdl-spinner mdl-js-spinner is-active" />
+          <Loader />
         ) : (
           <div className="mdl-card__supporting-text">
             <CommentsList
