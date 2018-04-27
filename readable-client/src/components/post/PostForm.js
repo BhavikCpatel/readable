@@ -52,7 +52,7 @@ export default class PostForm extends React.Component {
           body: this.state.body,
         })
         .then(() => {
-          alert('updated');
+          // console.log('post updated successfully');
           this.props.history.goBack();
         });
     } else {
@@ -67,7 +67,7 @@ export default class PostForm extends React.Component {
           timestamp: Date.now(),
         })
         .then(() => {
-          alert('saved');
+          // console.log('post saved successfully');
           this.props.history.push(`/post/${id}`);
         });
     }
