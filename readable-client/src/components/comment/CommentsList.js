@@ -1,5 +1,6 @@
 import React from 'react';
 import Comment from './Comment';
+import withLoader from '../../utils/withLoader';
 
 const CommentsList = props => {
   if (props.comments && props.comments.length > 0) {
@@ -19,4 +20,4 @@ const CommentsList = props => {
   return <div>Be Brave!, Be the first one to comment on this post!</div>;
 };
 
-export default CommentsList;
+export default withLoader(CommentsList);

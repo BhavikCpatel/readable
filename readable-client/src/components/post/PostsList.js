@@ -3,7 +3,7 @@ import Post from './Post';
 import AddPostButton from './AddPostButton';
 import PostsOrderMenu from './PostsOrderMenu';
 import { sortOrderMap } from '../../utils';
-import Loader from '../ui/Loader';
+import withLoader from '../../utils/withLoader';
 
 const PostsList = ({
   posts,
@@ -15,7 +15,7 @@ const PostsList = ({
 }) => (
   <section className="posts-container">
     <div className="mdl-typography--display-1">Posts</div>
-    {isLoading && <Loader />}
+
     <div className="post-card-container mdl-grid">
       {!isLoading && (
         <React.Fragment>
@@ -73,4 +73,4 @@ const PostsList = ({
   </section>
 );
 
-export default PostsList;
+export default withLoader(PostsList, 'Posts : Loading...');

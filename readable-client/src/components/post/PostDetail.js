@@ -3,13 +3,11 @@ import PostCommentsContainer from '../containers/PostCommentsContainer';
 import PostCard from './PostCard';
 import AddPostButton from './AddPostButton';
 import ColoredButton from '../ui/ColoredButton';
-import Loader from '../ui/Loader';
+import withLoader from '../../utils/withLoader';
 
 const PostDetail = ({ post, deletePost, history, isLoading, error }) => {
-  if (isLoading) {
-    return <Loader />;
-  } else if (error) {
-    return <div>Oops! something unexpected happened. Please try again!</div>;
+  if (error) {
+    return <div>Oops! something went wrong. Please try again!</div>;
   }
 
   return post ? (
@@ -44,4 +42,4 @@ const PostDetail = ({ post, deletePost, history, isLoading, error }) => {
   ) : null;
 };
 
-export default PostDetail;
+export default withLoader(PostDetail, 'Post Detail: Loading...');

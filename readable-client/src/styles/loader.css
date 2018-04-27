@@ -10,7 +10,11 @@
   border-radius: 5px;
   animation: load 1.8s ease-in-out infinite;
 }
-
+.loader-message {
+  font-size: 2em;
+  font-weight: 500px;
+  color: rgba(120, 120, 128, 0.938);
+}
 .loader:before,
 .loader:after {
   position: absolute;

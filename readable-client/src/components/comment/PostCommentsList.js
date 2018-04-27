@@ -51,17 +51,15 @@ class PostCommentsList extends React.Component {
           </div>
         )}
 
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <div className="mdl-card__supporting-text">
-            <CommentsList
-              deleteComment={deleteComment}
-              editComment={editComment}
-              comments={comments}
-            />
-          </div>
-        )}
+        <div className="mdl-card__supporting-text">
+          <CommentsList
+            deleteComment={deleteComment}
+            editComment={editComment}
+            comments={comments}
+            isLoading={isLoading}
+          />
+        </div>
+
         <div className="mdl-card__menu">
           <ColoredButton
             icon="add"
