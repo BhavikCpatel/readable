@@ -26,13 +26,14 @@ class App extends React.Component {
         <BrowserRouter>
           <React.Fragment>
             <CategoryListContainer categories={this.props.categories} />
-
-            <NotificationToast
-              message={this.props.notification.message}
-              type={this.props.notification.type}
-              timeout={3000}
-              onClose={() => this.notificationCloseHandler()}
-            />
+            {this.props.notification && (
+              <NotificationToast
+                message={this.props.notification.message}
+                type={this.props.notification.type}
+                timeout={1500}
+                onClose={() => this.notificationCloseHandler()}
+              />
+            )}
 
             <AppRoutes />
           </React.Fragment>
