@@ -10,7 +10,10 @@ import './styles/index.css';
 const initialState = {
   categories: { data: [], isError: false, isLoading: false },
   posts: { data: [], isError: false, isLoading: false },
-  ui: { orderBy: 'timestamp' },
+  ui: {
+    postSortOrder: { orderBy: 'timestamp', orderType: 'desc' },
+    notification: null,
+  },
 };
 const store = createStore(initialState);
 ReactDOM.render(

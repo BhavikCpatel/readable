@@ -1,4 +1,4 @@
-import requestOrderPosts from '../uiActions';
+import { requestOrderPosts } from '../uiActions';
 import {
   submitPostVote,
   postVoteSuccessed,
@@ -8,11 +8,17 @@ import {
   commentVoteFailed,
 } from '../voteActions';
 import { CATEGORY } from '../../constants';
+
 import * as api from '../../services/generalApi';
 
 export const orderPosts = (orderBy, orderType) => dispatch => {
   dispatch(requestOrderPosts({ orderBy, orderType }));
 };
+
+/*
+export const hideNotification = () => dispatch => {
+  dispatch(clearNotification());
+}; */
 
 function processVote(
   dispatch,

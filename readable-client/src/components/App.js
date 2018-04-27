@@ -6,17 +6,34 @@ import CategoryListContainer from './containers/CategoryListContainer';
 import { Footer } from './ui';
 import '../styles/App.css';
 import AppRoutes from './ui/AppRoutes';
+import NotificationToast from './ui/NotificationToast';
 
 class App extends React.Component {
   componentDidMount() {
     this.props.loadCategories();
   }
+
+  /* FUTURE:// In case if Notification Close event needs to be handled
+    notificationCloseHandler() {
+    // this.props.hideNotification();
+    // TODO: handle notification dispatch here
+    // console.log('notification closed');
+  } */
+
   render() {
     return (
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <BrowserRouter>
           <React.Fragment>
             <CategoryListContainer categories={this.props.categories} />
+
+            <NotificationToast
+              message={this.props.notification.message}
+              type={this.props.notification.type}
+              timeout={3000}
+              onClose={() => this.notificationCloseHandler()}
+            />
+
             <AppRoutes />
           </React.Fragment>
         </BrowserRouter>
@@ -28,9 +45,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
   categories: state.categories,
+  notification: state.ui.notification,
 });
 
-const mapDispatchToProps = {
-  loadCategories,
-};
+const mapDispatchToProps = { loadCategories };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

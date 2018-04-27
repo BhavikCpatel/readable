@@ -1,5 +1,5 @@
 import * as Action from '../constants';
-import { createAction } from '../utils';
+import { createAction, createActionWithNotification } from '../utils';
 
 export const requestPosts = createAction(
   Action.CATEGORY.POST,
@@ -13,12 +13,14 @@ export const postsReceived = createAction(
   Action.STATUS.SUCCEEDED,
 );
 
-export const postsFailed = (method, error) => ({
-  type: Action.CATEGORY.POST,
-  status: Action.STATUS.FAILED,
-  method, // this can be any one method from Action.METHOD.*
-  error,
-});
+export const postsFailed = createActionWithNotification(
+  createAction(Action.CATEGORY.POST, Action.METHOD.GET, Action.STATUS.FAILED)({
+    uiNotification: {
+      message: 'Unable to get posts, Please try again',
+      messageType: 'error',
+    },
+  }),
+);
 
 export const requestPostById = createAction(
   Action.CATEGORY.POST,
@@ -30,10 +32,17 @@ export const postByIdReceived = createAction(
   Action.METHOD.FIND_BY_ID,
   Action.STATUS.SUCCEEDED,
 );
-export const postByIdFailed = createAction(
-  Action.CATEGORY.POST,
-  Action.METHOD.FIND_BY_ID,
-  Action.STATUS.FAILED,
+export const postByIdFailed = createActionWithNotification(
+  createAction(
+    Action.CATEGORY.POST,
+    Action.METHOD.FIND_BY_ID,
+    Action.STATUS.FAILED,
+  )({
+    uiNotification: {
+      message: 'Unable to get post, Please try again',
+      messageType: 'error',
+    },
+  }),
 );
 
 export const requestDeletePost = createAction(
@@ -42,16 +51,30 @@ export const requestDeletePost = createAction(
   Action.STATUS.REQUEST,
 );
 
-export const deletePostSucceeded = createAction(
-  Action.CATEGORY.POST,
-  Action.METHOD.DELETE,
-  Action.STATUS.SUCCEEDED,
+export const deletePostSucceeded = createActionWithNotification(
+  createAction(
+    Action.CATEGORY.POST,
+    Action.METHOD.DELETE,
+    Action.STATUS.SUCCEEDED,
+  )({
+    uiNotification: {
+      message: 'Post deleted successfully',
+      messageType: 'success',
+    },
+  }),
 );
 
-export const deletePostFailed = createAction(
-  Action.CATEGORY.POST,
-  Action.METHOD.DELETE,
-  Action.STATUS.FAILED,
+export const deletePostFailed = createActionWithNotification(
+  createAction(
+    Action.CATEGORY.POST,
+    Action.METHOD.DELETE,
+    Action.STATUS.FAILED,
+  )({
+    uiNotification: {
+      message: 'Unable to delete post, Please try again',
+      messageType: 'error',
+    },
+  }),
 );
 
 export const requestEditPost = createAction(
@@ -60,16 +83,26 @@ export const requestEditPost = createAction(
   Action.STATUS.REQUEST,
 );
 
-export const editPostSucceeded = createAction(
-  Action.CATEGORY.POST,
-  Action.METHOD.EDIT,
-  Action.STATUS.SUCCEEDED,
+export const editPostSucceeded = createActionWithNotification(
+  createAction(
+    Action.CATEGORY.POST,
+    Action.METHOD.EDIT,
+    Action.STATUS.SUCCEEDED,
+  )({
+    uiNotification: {
+      message: 'Post updated successfully',
+      messageType: 'success',
+    },
+  }),
 );
 
-export const editPostFailed = createAction(
-  Action.CATEGORY.POST,
-  Action.METHOD.EDIT,
-  Action.STATUS.FAILED,
+export const editPostFailed = createActionWithNotification(
+  createAction(Action.CATEGORY.POST, Action.METHOD.EDIT, Action.STATUS.FAILED)({
+    uiNotification: {
+      message: 'Error while updating post, Please try again',
+      messageType: 'error',
+    },
+  }),
 );
 
 export const requestAddPost = createAction(
@@ -78,14 +111,24 @@ export const requestAddPost = createAction(
   Action.STATUS.REQUEST,
 );
 
-export const addPostSucceeded = createAction(
-  Action.CATEGORY.POST,
-  Action.METHOD.ADD,
-  Action.STATUS.SUCCEEDED,
+export const addPostSucceeded = createActionWithNotification(
+  createAction(
+    Action.CATEGORY.POST,
+    Action.METHOD.ADD,
+    Action.STATUS.SUCCEEDED,
+  )({
+    uiNotification: {
+      message: 'Post is saved successfully',
+      messageType: 'success',
+    },
+  }),
 );
 
-export const addPostFailed = createAction(
-  Action.CATEGORY.POST,
-  Action.METHOD.ADD,
-  Action.STATUS.FAILED,
+export const addPostFailed = createActionWithNotification(
+  createAction(Action.CATEGORY.POST, Action.METHOD.ADD, Action.STATUS.FAILED)({
+    uiNotification: {
+      message: 'Unable to add post, Please try again',
+      messageType: 'error',
+    },
+  }),
 );

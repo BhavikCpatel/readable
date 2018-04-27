@@ -2,6 +2,10 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
+import createUiNotifier from '../services/notificationMiddleware';
+import { notifyUser } from '../actions/uiActions';
+
+const uiNotificationMiddleware = createUiNotifier(notifyUser);
 
 const configureStore = initialState => {
   const composeEnhancers =
@@ -10,7 +14,9 @@ const configureStore = initialState => {
   const store = createStore(
     rootReducer,
     initialState,
-    composeEnhancers(applyMiddleware(thunk, createLogger())),
+    composeEnhancers(
+      applyMiddleware(thunk, uiNotificationMiddleware, createLogger()),
+    ),
   );
 
   return store;

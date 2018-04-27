@@ -48,8 +48,8 @@ section .posts-container {
   padding: 12px;
 }
 .notification-container {
-  position: absolute;
-  bottom: 80px;
+  position: fixed;
+  bottom: 50px;
   margin: auto;
   min-width: 200px;
   align-self: center;

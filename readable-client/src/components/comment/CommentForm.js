@@ -62,7 +62,7 @@ class CommentForm extends React.Component {
             timestamp: Date.now(),
           })
           .then(() => {
-            alert('saved');
+            // console.log('comment saved successfully');
             this.props.onSave(this.state);
           });
       }

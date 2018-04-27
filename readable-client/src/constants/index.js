@@ -23,6 +23,7 @@ export const METHOD = {
   GETALL: 'GETALL',
   FIND_BY_ID: 'FIND_BY_ID',
   SET_COMMENT_CNT: 'SET_COMMENT_CNT',
+  NOTIFICATION: 'NOTIFICATION',
 };
 // Action status: action status
 export const STATUS = {

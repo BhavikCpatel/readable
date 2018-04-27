@@ -52,6 +52,9 @@ export function createAction(category, method, status) {
     );
 }
 
+export function createActionWithNotification(action) {
+  return payload => Object.assign({}, action, payload);
+}
 /**
  * @function: getActionType
  * @description: get action type based on action {category, method, status}
@@ -68,7 +71,7 @@ export function getActionType(category, method, status) {
   return `${method}_${category}_${status}`;
 }
 
-export const sortOrderMap = new Map();
+const sortOrderMap = new Map();
 sortOrderMap.set('voteScore-desc', 'Most Voted');
 
 sortOrderMap.set('voteScore-asc', 'Least Voted');
@@ -76,3 +79,4 @@ sortOrderMap.set('timestamp-desc', 'Latest Post First');
 sortOrderMap.set('timestamp-asc', 'Oldest Post First');
 sortOrderMap.set('commentCount-desc', 'Most Commented');
 sortOrderMap.set('commentCount-asc', 'Least Commented');
+export const sortOrderMap;

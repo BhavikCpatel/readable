@@ -15,6 +15,7 @@ import {
   addPostSucceeded,
   addPostFailed,
 } from '../postsActions';
+
 import * as api from '../../services/postsApi';
 
 export const getPostsByCategory = category => dispatch => {
@@ -38,6 +39,7 @@ export const deletePost = (postId, callback) => dispatch => {
     if (callback) {
       callback();
     }
+
     dispatch(action);
   });
 };
@@ -56,7 +58,6 @@ export const addPost = post => dispatch => {
   dispatch(requestAddPost(post));
   return api.savePost(post, addPostSucceeded, addPostFailed).then(action => {
     dispatch(action);
-
     return action.error ? Promise.reject(post.id) : Promise.resolve(post.id);
   });
 };

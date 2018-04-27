@@ -31,7 +31,9 @@ class PostsListContainer extends React.Component {
         deletePost={this.props.deletePost}
         isLoading={this.props.isLoading}
         error={this.props.error}
-        currentSortOrder={`${this.props.sortBy}-${this.props.sortOrder}`}
+        currentSortOrder={`${this.props.postSortOrder.orderBy}-${
+          this.props.postSortOrder.orderType
+        }`}
         orderPosts={this.props.orderPosts}
       />
     );
@@ -41,8 +43,9 @@ class PostsListContainer extends React.Component {
 const filterPostsByCategory = (posts, category) =>
   category ? posts.filter(post => post.category === category) : posts;
 
-const withOrder = (posts, orderBy, orderType) => {
-  const sortOrder = orderType === 'desc' ? 1 : -1;
+const withOrder = (posts, postSortOrder) => {
+  const sortOrder = postSortOrder.orderType === 'desc' ? 1 : -1;
+  const orderBy = postSortOrder.orderBy;
   return posts
     .slice()
     .sort((postA, postB) => sortOrder * (postB[orderBy] - postA[orderBy]));
@@ -50,8 +53,7 @@ const withOrder = (posts, orderBy, orderType) => {
 const mapStateToProps = ({ posts, ui }, ownProps) => {
   const filteredAndOrderPosts = withOrder(
     filterPostsByCategory(posts.data || [], ownProps.match.params.category),
-    ui.orderBy,
-    ui.orderType,
+    ui.postSortOrder,
   );
 
   return {
@@ -60,8 +62,7 @@ const mapStateToProps = ({ posts, ui }, ownProps) => {
     isLoading: posts.isLoading,
     category: posts.postCategory,
     error: posts.error,
-    sortBy: ui.orderBy,
-    sortOrder: ui.orderType || 'desc',
+    postSortOrder: ui.postSortOrder,
   };
 };
 
