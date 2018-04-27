@@ -14,11 +14,13 @@ class App extends React.Component {
   }
 
   /* FUTURE:// In case if Notification Close event needs to be handled
-    notificationCloseHandler() {
+  */
+
+  notificationCloseHandler() {
     // this.props.hideNotification();
-    // TODO: handle notification dispatch here
+    // TODO: handle notification dispatch here (based on requirement)
     // console.log('notification closed');
-  } */
+  }
 
   render() {
     return (
