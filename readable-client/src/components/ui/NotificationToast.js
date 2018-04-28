@@ -9,7 +9,11 @@ const Notifier = ({ type, message, onClose: onCloseHandler }) => (
       id="close-notification"
       icon="close"
       iconColor="white"
-      onClick={() => onCloseHandler(false)}
+      onClick={() => {
+        if (onCloseHandler) {
+          onCloseHandler(false);
+        }
+      }}
     />
   </section>
 );
