@@ -19,9 +19,11 @@ NavBar.defaultProps = {
 };
 
 NavBar.propTypes = {
-  items: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    path: PropTypes.string.isRequired,
-  }),
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired,
+    }),
+  ),
 };
 export default NavBar;
