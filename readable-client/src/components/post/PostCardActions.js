@@ -11,11 +11,11 @@ const PostCardActions = ({ postId, voteScore, deletePost, isDetailCard }) => (
         <LinkButton
           icon="edit"
           id="editPost"
-          postId={`edit/${postId}`}
+          path={`/post/edit/${postId}`}
           value=" Edit"
         />
       ) : (
-        <LinkButton id="read-more" postId={postId} value="More" />
+        <LinkButton id="read-more" path={`/post/${postId}`} value="More" />
       )}
       <div className="mdl-layout-spacer" />
       <VoteCardContainer
