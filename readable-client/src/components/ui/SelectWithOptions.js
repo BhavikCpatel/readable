@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SelectWithOptions = props => {
   const categoryOptions = props.options.map(category => (
-    <option key={category.name} value={category.name}>
+    <option key={category.name} value={category.path}>
       {category.name}
     </option>
   ));
@@ -31,17 +32,17 @@ const SelectWithOptions = props => {
               );
               props.onChange(e);
             }}
-            onFocus={e =>
-              (e.target.parentElement.className = `${
+            onFocus={e => {
+              e.target.parentElement.className = `${
                 e.target.parentElement.className
-              } is-focused is-upgraded`)
-            }
-            onBlur={e =>
-              (e.target.parentElement.className = e.target.parentElement.className.replace(
+              } is-focused is-upgraded`;
+            }}
+            onBlur={e => {
+              e.target.parentElement.className = e.target.parentElement.className.replace(
                 'is-focused is-upgraded',
                 '',
-              ))
-            }
+              );
+            }}
           >
             {categoryOptions}
           </select>
@@ -51,6 +52,24 @@ const SelectWithOptions = props => {
       </div>
     </div>
   );
+};
+SelectWithOptions.propTypes = {
+  id: PropTypes.string.isRequired,
+  fieldCaption: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  errorMessage: PropTypes.string,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
+
+SelectWithOptions.defaultProps = {
+  value: '',
+  errorMessage: '',
 };
 
 export default SelectWithOptions;

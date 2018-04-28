@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SectionHeader = props => (
   <div
@@ -12,4 +13,12 @@ const SectionHeader = props => (
   </div>
 );
 
+SectionHeader.propTypes = {
+  color: PropTypes.string,
+  title: PropTypes.string.isRequired,
+};
+
+SectionHeader.defaultProps = {
+  color: 'grey-400',
+};
 export default SectionHeader;

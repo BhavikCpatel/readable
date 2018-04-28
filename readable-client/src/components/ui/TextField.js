@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TextField = props => (
   <div id={`${props.id}-field`} className="mdl-grid">
@@ -30,11 +31,11 @@ const TextField = props => (
 
             props.onChange(e);
           }}
-          onFocus={e =>
-            (e.target.parentElement.className = `${
+          onFocus={e => {
+            e.target.parentElement.className = `${
               e.target.parentElement.className
-            } is-focused`)
-          }
+            } is-focused`;
+          }}
           onBlur={e => {
             e.target.parentElement.className = e.target.parentElement.className.replace(
               'is-focused',
@@ -49,5 +50,24 @@ const TextField = props => (
     </div>
   </div>
 );
+
+TextField.propTypes = {
+  id: PropTypes.string.isRequired,
+  fieldCaption: PropTypes.string.isRequired,
+  largeField: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  errorMessage: PropTypes.string,
+  pattern: PropTypes.string,
+  disabled: PropTypes.bool,
+};
+
+TextField.defaultProps = {
+  value: '',
+  errorMessage: '',
+  largeField: false,
+  pattern: null,
+  disabled: false,
+};
 
 export default TextField;

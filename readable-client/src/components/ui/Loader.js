@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../../styles/loader.css';
 
 const Loader = props => (
@@ -8,4 +9,11 @@ const Loader = props => (
   </div>
 );
 
+Loader.defaultProps = {
+  message: null,
+};
+
+Loader.propTypes = {
+  message: PropTypes.string,
+};
 export default Loader;

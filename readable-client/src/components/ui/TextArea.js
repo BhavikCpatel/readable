@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TextArea = props => (
   <div id={`${props.id}-field`} className="mdl-grid">
@@ -19,7 +20,6 @@ const TextArea = props => (
           pattern={props.pattern}
           value={props.value}
           disabled={props.disabled}
-          required={props.required}
           onChange={e => {
             e.target.required = true;
             e.target.parentElement.setAttribute(
@@ -31,11 +31,11 @@ const TextArea = props => (
             );
             props.onChange(e);
           }}
-          onFocus={e =>
-            (e.target.parentElement.className = `${
+          onFocus={e => {
+            e.target.parentElement.className = `${
               e.target.parentElement.className
-            } is-focused is-upgraded`)
-          }
+            } is-focused is-upgraded`;
+          }}
         />
 
         <span className="mdl-textfield__error">{props.errorMessage}</span>
@@ -43,5 +43,26 @@ const TextArea = props => (
     </div>
   </div>
 );
+
+TextArea.propTypes = {
+  id: PropTypes.string.isRequired,
+  fieldCaption: PropTypes.string.isRequired,
+  largeField: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  errorMessage: PropTypes.string,
+  rows: PropTypes.number,
+  pattern: PropTypes.string,
+  disabled: PropTypes.bool,
+};
+
+TextArea.defaultProps = {
+  value: '',
+  errorMessage: '',
+  largeField: false,
+  rows: 2,
+  pattern: null,
+  disabled: false,
+};
 
 export default TextArea;

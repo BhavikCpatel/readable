@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NavBar from './NavBar';
 
 const Drawer = props => (
@@ -10,5 +11,13 @@ const Drawer = props => (
     <NavBar items={props.items.data} />
   </div>
 );
+
+Drawer.defaultProps = {
+  items: { data: [] },
+};
+Drawer.propTypes = {
+  appTitle: PropTypes.string.isRequired,
+  items: PropTypes.shape({ data: PropTypes.array }),
+};
 
 export default Drawer;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ColoredButton = props => (
   <button
@@ -13,4 +14,17 @@ const ColoredButton = props => (
   </button>
 );
 
+ColoredButton.defaultProps = {
+  type: 'button',
+  icon: null,
+  color: null,
+};
+ColoredButton.propTypes = {
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  color: PropTypes.string,
+  icon: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 export default ColoredButton;

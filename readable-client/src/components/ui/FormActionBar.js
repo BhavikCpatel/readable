@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ColoredButton from './ColoredButton';
 
 const FormActionBar = props => (
@@ -22,5 +23,13 @@ const FormActionBar = props => (
     )}
   </React.Fragment>
 );
+
+FormActionBar.defaultProps = {
+  onCancel: null,
+};
+FormActionBar.propTypes = {
+  onClear: PropTypes.func.isRequired,
+  onCancel: PropTypes.func,
+};
 
 export default FormActionBar;

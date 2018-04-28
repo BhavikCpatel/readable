@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer = props => (
+const Footer = () => (
   <footer className="app-footer mdl-mini-footer">
     <div className="mdl-mini-footer__left-section mdl-typography--text-center">
       <ul className="mdl-mini-footer__link-list">

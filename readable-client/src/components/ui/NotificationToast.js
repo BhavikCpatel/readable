@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import IconButton from './IconButton';
 
 const Notifier = ({ type, message, onClose: onCloseHandler }) => (
@@ -13,9 +14,30 @@ const Notifier = ({ type, message, onClose: onCloseHandler }) => (
   </section>
 );
 
-export default class NotificationToast extends React.Component {
-  state = { showNotification: true };
+Notifier.propTypes = {
+  type: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  onClose: PropTypes.func,
+};
+Notifier.defaultProps = {
+  onClose: null,
+};
 
+export default class NotificationToast extends React.Component {
+  propTypes = {
+    timeout: PropTypes.number,
+    onClose: PropTypes.func,
+  };
+  defaultProps = {
+    timeout: 1000,
+    onClose: null,
+  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      showNotification: true,
+    };
+  }
   componentDidMount() {
     const { timeout } = this.props;
     this.timeoutId = this.setTimer(timeout);
@@ -26,10 +48,7 @@ export default class NotificationToast extends React.Component {
   }
 
   setTimer(timeout) {
-    return setTimeout(
-      () => this.setNotification(false),
-      timeout > 0 ? timeout : 1000,
-    );
+    return setTimeout(() => this.setNotification(false), timeout);
   }
   setNotification(isVisible) {
     if (!isVisible) {
@@ -40,7 +59,6 @@ export default class NotificationToast extends React.Component {
     }
     this.setState({ showNotification: isVisible });
   }
-  timeoutId = null;
 
   render() {
     return this.state.showNotification ? <Notifier {...this.props} /> : null;

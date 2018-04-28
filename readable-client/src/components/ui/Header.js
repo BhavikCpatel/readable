@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NavBar from './NavBar';
 
 const Header = props => (
@@ -21,5 +22,15 @@ const Header = props => (
     </div>
   </header>
 );
+
+Header.defaultProps = {
+  color: 'primary',
+  items: { data: [] },
+};
+Header.propTypes = {
+  color: PropTypes.string,
+  appTitle: PropTypes.string.isRequired,
+  items: PropTypes.shape({ data: PropTypes.array }),
+};
 
 export default Header;

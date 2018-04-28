@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import IconButton from './IconButton';
+import { CATEGORY } from '../../constants';
 
 const VoteCard = ({ voteCategory, id, voteScore, registerVote }) => (
   <React.Fragment>
@@ -18,5 +20,12 @@ const VoteCard = ({ voteCategory, id, voteScore, registerVote }) => (
     />
   </React.Fragment>
 );
+
+VoteCard.propTypes = {
+  voteCategory: PropTypes.oneOf([CATEGORY.POST, CATEGORY.COMMENT]).isRequired,
+  id: PropTypes.string.isRequired,
+  voteScore: PropTypes.number.isRequired,
+  registerVote: PropTypes.func.isRequired,
+};
 
 export default VoteCard;
