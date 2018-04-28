@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import loadCategories from '../actions/async/categoriesAsyncActions';
-import CategoryListContainer from './containers/CategoryListContainer';
+import CategoryList from './category/CategoryList';
 import { Footer } from './ui';
 import '../styles/App.css';
 import AppRoutes from './ui/AppRoutes';
@@ -27,7 +27,7 @@ class App extends React.Component {
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <BrowserRouter>
           <React.Fragment>
-            <CategoryListContainer categories={this.props.categories} />
+            <CategoryList categories={this.props.categories} />
             {this.props.notification && (
               <NotificationToast
                 message={this.props.notification.message}

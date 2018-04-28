@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Header, Drawer } from '../ui';
 import { APP_TITLE, HEADER_COLOR } from '../../constants';
 
-class CategoryListContainer extends React.Component {
+class CategoryList extends React.Component {
   static propTypes = {
     categories: PropTypes.shape({
       data: PropTypes.arrayOf(
@@ -40,4 +40,4 @@ class CategoryListContainer extends React.Component {
   }
 }
 
-export default CategoryListContainer;
+export default CategoryList;
