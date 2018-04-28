@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { postPropTypes } from '../../utils/propTypesDefs';
 import CommentCounter from './CommentCounter';
 
 const PostContent = ({ post, isDetailCard }) => {
@@ -22,6 +24,11 @@ const PostContent = ({ post, isDetailCard }) => {
       </span>
     </div>
   );
+};
+
+PostContent.propTypes = {
+  post: postPropTypes.isRequired,
+  isDetailCard: PropTypes.bool.isRequired,
 };
 
 export default PostContent;

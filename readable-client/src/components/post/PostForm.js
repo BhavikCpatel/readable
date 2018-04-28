@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { postPropTypes } from '../../utils/propTypesDefs';
 import { generateUniqueId } from '../../utils';
 import SectionHeader from '../ui/SectionHeader';
 import TextField from '../ui/TextField';
@@ -8,10 +10,27 @@ import SelectWithOptions from '../ui/SelectWithOptions';
 import ColoredButton from '../ui/ColoredButton';
 
 export default class PostForm extends React.Component {
+  static propTypes = {
+    post: postPropTypes,
+    addPost: PropTypes.func.isRequired,
+    editPost: PropTypes.func.isRequired,
+    categories: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        path: PropTypes.string.isRequired,
+      }),
+    ),
+    history: PropTypes.object.isRequired,
+  };
+  static defaultProps = {
+    post: null,
+    categories: null,
+  };
+
   constructor(props) {
     super(props);
 
-    const post = props.post;
+    const { post } = props;
     this.state = {
       id: post ? post.id : undefined,
       title: post ? post.title : '',
@@ -36,14 +55,14 @@ export default class PostForm extends React.Component {
   handleInputChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
-  validateFormData(post) {
+  /* validateFormData(post) {
     return true;
-  }
+  } */
   handleFormSubmit(event) {
     event.preventDefault();
-    if (!this.validateFormData(this.state)) {
-      // TOOD: Validation Handler
-    }
+    // if (!this.validateFormData(this.state)) {
+    // TOOD: Validation Handler
+    // }
     if (this.state.id) {
       this.props
         .editPost({

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LinkButton from '../ui/LinkButton';
 import VoteCardContainer from '../containers/VoteCardContainer';
 import IconButton from '../ui/IconButton';
@@ -35,4 +36,10 @@ const PostCardActions = ({ postId, voteScore, deletePost, isDetailCard }) => (
   </React.Fragment>
 );
 
+PostCardActions.propTypes = {
+  postId: PropTypes.string.isRequired,
+  voteScore: PropTypes.number.isRequired,
+  deletePost: PropTypes.func.isRequired,
+  isDetailCard: PropTypes.bool.isRequired,
+};
 export default PostCardActions;

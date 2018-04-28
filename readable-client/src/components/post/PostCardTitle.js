@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PostCardTitle = props => (
   <div className="mdl-card__title ">
@@ -8,4 +9,7 @@ const PostCardTitle = props => (
   </div>
 );
 
+PostCardTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 export default PostCardTitle;

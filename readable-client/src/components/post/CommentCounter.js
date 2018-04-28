@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CommentCounter = props => (
   <section className="comment-section">
@@ -15,5 +16,9 @@ const CommentCounter = props => (
     </span>
   </section>
 );
+
+CommentCounter.propTypes = {
+  comments: PropTypes.number.isRequired,
+};
 
 export default CommentCounter;

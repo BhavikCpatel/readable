@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { postPropTypes } from '../../utils/propTypesDefs';
 import PostCard from './PostCard';
 
 const Post = ({ post, deletePost, dCells, tCells }) => (
@@ -13,5 +15,18 @@ const Post = ({ post, deletePost, dCells, tCells }) => (
     <PostCard post={post} deletePost={deletePost} />
   </div>
 );
+
+Post.propTypes = {
+  post: postPropTypes,
+  deletePost: PropTypes.func.isRequired,
+  dCells: PropTypes.number,
+  tCells: PropTypes.number,
+};
+
+Post.defaultProps = {
+  post: null,
+  dCells: 4,
+  tCells: 4,
+};
 
 export default Post;

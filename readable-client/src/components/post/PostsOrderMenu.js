@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { sortOrderMap } from '../../utils';
 
 const PostsOrderMenu = ({ currentSortOrder, orderPosts }) => (
@@ -19,15 +20,16 @@ const PostsOrderMenu = ({ currentSortOrder, orderPosts }) => (
             const sortDisplayValue = sortItem[1];
 
             return (
-              <li
+              <button
+                style={{ width: '100%' }}
                 key={sortItem[0]}
-                className={`menu-item ${
+                className={`btn menu-item ${
                   currentSortOrder === sortItem[0] ? 'mdl-color--blue-300' : ''
                 }`}
                 onClick={() => orderPosts(sortField, sortOrder)}
               >
                 {sortDisplayValue}
-              </li>
+              </button>
             );
           })}
         </ul>
@@ -36,4 +38,8 @@ const PostsOrderMenu = ({ currentSortOrder, orderPosts }) => (
   </React.Fragment>
 );
 
+PostsOrderMenu.propTypes = {
+  currentSortOrder: PropTypes.string.isRequired,
+  orderPosts: PropTypes.func.isRequired,
+};
 export default PostsOrderMenu;

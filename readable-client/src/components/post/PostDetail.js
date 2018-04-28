@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { postPropTypes } from '../../utils/propTypesDefs';
 import PostCommentsContainer from '../containers/PostCommentsContainer';
 import PostCard from './PostCard';
 import AddPostButton from './AddPostButton';
 import ColoredButton from '../ui/ColoredButton';
 import withLoader from '../../utils/withLoader';
 
-const PostDetail = ({ post, deletePost, history, isLoading, error }) => {
+const PostDetail = ({ post, deletePost, history, error }) => {
   if (error) {
     return <div>Oops! something went wrong. Please try again!</div>;
   }
@@ -40,6 +42,18 @@ const PostDetail = ({ post, deletePost, history, isLoading, error }) => {
       </div>
     </React.Fragment>
   ) : null;
+};
+
+PostDetail.propTypes = {
+  post: postPropTypes,
+  deletePost: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+  error: PropTypes.string,
+};
+
+PostDetail.defaultProps = {
+  error: null,
+  post: null,
 };
 
 export default withLoader(PostDetail, 'Post Detail: Loading...');

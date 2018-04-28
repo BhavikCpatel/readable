@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { postPropTypes } from '../../utils/propTypesDefs';
 import Post from './Post';
 import AddPostButton from './AddPostButton';
 import PostsOrderMenu from './PostsOrderMenu';
@@ -8,7 +10,6 @@ import withLoader from '../../utils/withLoader';
 const PostsList = ({
   posts,
   deletePost,
-  isLoading,
   error,
   currentSortOrder,
   orderPosts,
@@ -17,19 +18,18 @@ const PostsList = ({
     <div className="mdl-typography--display-1">Posts</div>
 
     <div className="post-card-container mdl-grid">
-      {!isLoading && (
-        <React.Fragment>
-          <div className="mdl-cell mdl-cell--4-col">
-            <PostsOrderMenu
-              currentSortOrder={currentSortOrder}
-              orderPosts={orderPosts}
-            />
-          </div>
-          <div className="mdl-cell mdl-cell--4-col mdl-cell--4-offset-desktop mdl-typography--text-right">
-            <AddPostButton />
-          </div>
-        </React.Fragment>
-      )}
+      <React.Fragment>
+        <div className="mdl-cell mdl-cell--4-col">
+          <PostsOrderMenu
+            currentSortOrder={currentSortOrder}
+            orderPosts={orderPosts}
+          />
+        </div>
+        <div className="mdl-cell mdl-cell--4-col mdl-cell--4-offset-desktop mdl-typography--text-right">
+          <AddPostButton />
+        </div>
+      </React.Fragment>
+
       {posts &&
         posts.map(post => (
           <Post
@@ -42,7 +42,6 @@ const PostsList = ({
         ))}
       {posts &&
         posts.length === 0 &&
-        !isLoading &&
         !error && (
           <div className="mdl-grid">
             <div className="mdl-cell mdl-cell--12-col">
@@ -73,4 +72,16 @@ const PostsList = ({
   </section>
 );
 
+PostsList.propTypes = {
+  posts: PropTypes.arrayOf(postPropTypes),
+  deletePost: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  currentSortOrder: PropTypes.string.isRequired,
+  orderPosts: PropTypes.func.isRequired,
+};
+
+PostsList.defaultProps = {
+  error: null,
+  posts: [],
+};
 export default withLoader(PostsList, 'Posts : Loading...');
