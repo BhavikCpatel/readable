@@ -55,7 +55,9 @@ export default class NotificationToast extends React.Component {
       if (this.timeoutId) {
         clearTimeout(this.timeoutId);
       }
-      this.props.onClose();
+      if (this.props.onClose) {
+        this.props.onClose();
+      }
     }
     this.setState({ showNotification: isVisible });
   }
