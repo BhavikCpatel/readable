@@ -14,7 +14,7 @@ export const postPropTypes = PropTypes.shape({
 export const commentPropTypes = PropTypes.shape({
   id: PropTypes.string.isRequired,
   parentId: PropTypes.string.isRequired,
-  timeStamp: PropTypes.number.isRequired,
+  timeStamp: PropTypes.number,
   body: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   voteScore: PropTypes.number.isRequired,

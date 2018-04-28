@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { commentPropTypes } from '../../utils/propTypesDefs';
 import {
   deleteComment,
   editComment,
@@ -11,6 +13,21 @@ import {
 import PostCommentsList from '../comment/PostCommentsList';
 
 class PostCommentsContainer extends React.Component {
+  static propTypes = {
+    postId: PropTypes.string.isRequired,
+    comments: PropTypes.arrayOf(commentPropTypes),
+    isLoading: PropTypes.bool,
+    error: PropTypes.string,
+    deleteComment: PropTypes.func.isRequired,
+    addComment: PropTypes.func.isRequired,
+    editComment: PropTypes.func.isRequired,
+    getCommentsByPost: PropTypes.func.isRequired,
+  };
+  static defaultProps = {
+    comments: null,
+    error: null,
+    isLoading: false,
+  };
   componentDidMount() {
     this.props.getCommentsByPost(this.props.postId);
   }

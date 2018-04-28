@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { postPropTypes } from '../../utils/propTypesDefs';
 import {
   getPostsByCategory,
   deletePost,
@@ -10,6 +12,23 @@ import { orderPosts } from '../../actions/async/generalAsyncActions';
 import PostsList from '../post/PostsList';
 
 class PostsListContainer extends React.Component {
+  static propTypes = {
+    getPostsByCategory: PropTypes.func.isRequired,
+    orderPosts: PropTypes.func.isRequired,
+    deletePost: PropTypes.func.isRequired,
+    posts: PropTypes.arrayOf(postPropTypes),
+    filterByCategory: PropTypes.string.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    error: PropTypes.string,
+    postSortOrder: PropTypes.shape({
+      orderBy: PropTypes.string.isRequired,
+      orderType: PropTypes.string.isRequired,
+    }).isRequired,
+  };
+  static defaultProps = {
+    error: null,
+    posts: null,
+  };
   componentDidMount() {
     this.loadPostsByCategory(this.props.filterByCategory);
   }
@@ -45,7 +64,7 @@ const filterPostsByCategory = (posts, category) =>
 
 const withOrder = (posts, postSortOrder) => {
   const sortOrder = postSortOrder.orderType === 'desc' ? 1 : -1;
-  const orderBy = postSortOrder.orderBy;
+  const { orderBy } = postSortOrder;
   return posts
     .slice()
     .sort((postA, postB) => sortOrder * (postB[orderBy] - postA[orderBy]));
@@ -60,7 +79,6 @@ const mapStateToProps = ({ posts, ui }, ownProps) => {
     posts: filteredAndOrderPosts,
     filterByCategory: ownProps.match.params.category || 'all',
     isLoading: posts.isLoading,
-    category: posts.postCategory,
     error: posts.error,
     postSortOrder: ui.postSortOrder,
   };

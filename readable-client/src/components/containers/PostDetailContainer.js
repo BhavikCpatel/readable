@@ -1,10 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { postPropTypes } from '../../utils/propTypesDefs';
 import { deletePost, getPostById } from '../../actions/async/postsAsyncActions';
 import PostDetail from '../post/PostDetail';
 
 class PostsDetailContainer extends React.Component {
+  static propTypes = {
+    post: postPropTypes,
+    postId: PropTypes.string.isRequired,
+    isLoading: PropTypes.bool,
+    error: PropTypes.string,
+    deletePost: PropTypes.func.isRequired,
+    getPostById: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    post: null,
+    isLoading: false,
+    error: null,
+  };
   componentDidMount() {
     if (!this.props.post && this.props.postId) {
       this.props.getPostById(this.props.postId);
