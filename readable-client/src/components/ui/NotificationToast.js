@@ -24,11 +24,11 @@ Notifier.defaultProps = {
 };
 
 export default class NotificationToast extends React.Component {
-  propTypes = {
+  static propTypes = {
     timeout: PropTypes.number,
     onClose: PropTypes.func,
   };
-  defaultProps = {
+  static defaultProps = {
     timeout: 1000,
     onClose: null,
   };

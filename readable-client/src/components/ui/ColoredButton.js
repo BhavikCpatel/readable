@@ -18,6 +18,7 @@ ColoredButton.defaultProps = {
   type: 'button',
   icon: null,
   color: null,
+  onClick: null,
 };
 ColoredButton.propTypes = {
   id: PropTypes.string.isRequired,
@@ -25,6 +26,6 @@ ColoredButton.propTypes = {
   color: PropTypes.string,
   icon: PropTypes.string,
   value: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 export default ColoredButton;

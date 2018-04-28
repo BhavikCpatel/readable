@@ -51,7 +51,7 @@ TextArea.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
   errorMessage: PropTypes.string,
-  rows: PropTypes.number,
+  rows: PropTypes.string,
   pattern: PropTypes.string,
   disabled: PropTypes.bool,
 };
@@ -60,7 +60,7 @@ TextArea.defaultProps = {
   value: '',
   errorMessage: '',
   largeField: false,
-  rows: 2,
+  rows: '2',
   pattern: null,
   disabled: false,
 };
