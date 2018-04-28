@@ -42,7 +42,7 @@ class PostCommentsContainer extends React.Component {
   }
 }
 const mapStateToProps = ({ comments }, ownProps) => {
-  const postId = ownProps.postId;
+  const { postId } = ownProps;
 
   return {
     postId,
