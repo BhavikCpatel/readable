@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { commentPropTypes } from '../../utils/propTypesDefs';
 import IconButton from '../ui/IconButton';
 
 const CommentActions = props => (
@@ -18,5 +20,11 @@ const CommentActions = props => (
     />
   </React.Fragment>
 );
+
+CommentActions.propTypes = {
+  deleteComment: PropTypes.func.isRequired,
+  onEditRequest: PropTypes.func.isRequired,
+  comment: commentPropTypes.isRequired,
+};
 
 export default CommentActions;

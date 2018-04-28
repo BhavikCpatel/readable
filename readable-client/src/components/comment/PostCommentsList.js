@@ -1,16 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { commentPropTypes } from '../../utils/propTypesDefs';
 import ColoredButton from '../ui/ColoredButton';
 import CommentsList from '../comment/CommentsList';
 import SectionHeader from '../ui/SectionHeader';
 import CommentForm from './CommentForm';
-import Loader from '../ui/Loader';
 
 class PostCommentsList extends React.Component {
+  static propTypes = {
+    postId: PropTypes.string,
+    comments: PropTypes.arrayOf(commentPropTypes),
+    deleteComment: PropTypes.func.isRequired,
+    addComment: PropTypes.func.isRequired,
+    editComment: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+  };
+  static defaultProps = {
+    postId: null,
+    comments: null,
+  };
+  static getCommentCountTitle(isLoading, comments) {
+    if (isLoading) {
+      return ' Loading...';
+    } else if (comments) {
+      return comments.length;
+    }
+    return 0;
+  }
   state = {
     showCommentForm: false,
   };
-  onSaveHandler(comment) {
-    // TODO: console.log('move save routing to this comp', comment);
+  onSaveHandler() {
+    // FUTURE TODO: use comment argument to get updated comment from child component
+    // console.log('move save routing to this comp', comment);
     this.setState({ showCommentForm: false });
   }
   onAddCommentHandler() {
@@ -34,9 +56,10 @@ class PostCommentsList extends React.Component {
       <React.Fragment>
         <SectionHeader
           color="grey-600"
-          title={`Comments (${
-            isLoading ? ' Loading... ' : comments ? comments.length : 0
-          })`}
+          title={`Comments (${PostCommentsList.getCommentCountTitle(
+            isLoading,
+            comments,
+          )})`}
         />
 
         {this.state.showCommentForm && (

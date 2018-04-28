@@ -1,4 +1,5 @@
 import React from 'react';
+import { commentPropTypes } from '../../utils/propTypesDefs';
 
 const CommentDetail = ({ comment }) => (
   <span className="mdl-list__item-primary-content">
@@ -10,4 +11,12 @@ const CommentDetail = ({ comment }) => (
     </span>
   </span>
 );
+
+CommentDetail.propTypes = {
+  comment: commentPropTypes,
+};
+
+CommentDetail.defaultProps = {
+  comment: null,
+};
 export default CommentDetail;

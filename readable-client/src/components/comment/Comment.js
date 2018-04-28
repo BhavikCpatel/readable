@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { commentPropTypes } from '../../utils/propTypesDefs';
 import VoteCardContainer from '../containers/VoteCardContainer';
 import CommentActions from './CommentActions';
 import CommentDetail from './CommentDetail';
@@ -6,6 +8,11 @@ import EditComment from './EditComment';
 import { CATEGORY } from '../../constants';
 
 class Comment extends React.Component {
+  static propTypes = {
+    comment: commentPropTypes.isRequired,
+    deleteComment: PropTypes.func.isRequired,
+    editComment: PropTypes.func.isRequired,
+  };
   state = {
     showEditForm: false,
   };

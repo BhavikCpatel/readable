@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { generateUniqueId } from '../../utils';
 import TextField from '../ui/TextField';
 import TextArea from '../ui/TextArea';
@@ -7,6 +7,23 @@ import FormActionBar from '../ui/FormActionBar';
 import IconButton from '../ui/IconButton';
 
 class CommentForm extends React.Component {
+  static propTypes = {
+    postId: PropTypes.string.isRequired,
+    onSave: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
+    addComment: PropTypes.func.isRequired,
+  };
+  static validateInput(commentBody, authorName) {
+    if (!commentBody || commentBody === '') {
+      alert('Comment is missing');
+      return false;
+    } else if (!authorName || authorName === '') {
+      alert('Please enter your name');
+      return false;
+    }
+    // TODO: implement form validation here
+    return true;
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -31,41 +48,21 @@ class CommentForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  validateInput(commentBody, authorName) {
-    // TODO: implement form validation here
-    return true;
-  }
-
   handleFormSubmit(event) {
     event.preventDefault();
-    if (this.validateInput(this.state.commentBody, this.state.author)) {
-      // submit response
-      // USAGE:  Edit the details of an existing comment
-      // PARAMS: timestamp: timestamp.
-      //        body: String
-
-      if (this.state.mode === 'edit') {
-        // edit comment
-        this.props.editComment({
-          id: this.state.commentId,
+    if (CommentForm.validateInput(this.state.commentBody, this.state.author)) {
+      this.props
+        .addComment({
+          id: generateUniqueId(),
           body: this.state.commentBody,
+          author: this.state.author,
+          parentId: this.state.postId,
           timestamp: Date.now(),
+        })
+        .then(() => {
+          // console.log('comment saved successfully');
+          this.props.onSave(this.state);
         });
-      } else {
-        // add comment
-        this.props
-          .addComment({
-            id: generateUniqueId(),
-            body: this.state.commentBody,
-            author: this.state.author,
-            parentId: this.state.postId,
-            timestamp: Date.now(),
-          })
-          .then(() => {
-            // console.log('comment saved successfully');
-            this.props.onSave(this.state);
-          });
-      }
     }
   }
   resetCommentForm() {

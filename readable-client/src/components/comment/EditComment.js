@@ -1,8 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { commentPropTypes } from '../../utils/propTypesDefs';
 import FormActionBar from '../ui/FormActionBar';
 import TextArea from '../ui/TextArea';
 
 class EditComment extends React.Component {
+  static propTypes = {
+    comment: commentPropTypes,
+    onSave: PropTypes.func.isRequired,
+    editComment: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
+  };
+  static defaultProps = {
+    comment: null,
+  };
+
+  static validateInput(commentBody) {
+    // TODO: implement form validation here
+    if (!commentBody || commentBody === '') {
+      return false;
+    }
+    return true;
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -16,19 +35,9 @@ class EditComment extends React.Component {
     this.setState({ commentBody: event.target.value });
   }
 
-  validateInput(commentBody) {
-    // TODO: implement form validation here
-    return true;
-  }
-
   handleFormSubmit(event) {
     event.preventDefault();
-    if (this.validateInput(this.state.commentBody)) {
-      // submit response
-      // USAGE:  Edit the details of an existing comment
-      // PARAMS: timestamp: timestamp.
-      //        body: String
-
+    if (EditComment.validateInput(this.state.commentBody)) {
       this.props
         .editComment({
           id: this.state.commentId,
@@ -36,7 +45,7 @@ class EditComment extends React.Component {
           timestamp: Date.now(),
         })
         .then(() => {
-          alert('saved');
+          // Handle Response here alert('saved');
           this.props.onSave(this.state);
         });
     }

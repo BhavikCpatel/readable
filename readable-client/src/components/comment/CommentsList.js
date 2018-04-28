@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { commentPropTypes } from '../../utils/propTypesDefs';
 import Comment from './Comment';
 import withLoader from '../../utils/withLoader';
 
@@ -18,6 +20,16 @@ const CommentsList = props => {
     );
   }
   return <div>Be Brave!, Be the first one to comment on this post!</div>;
+};
+
+CommentsList.propTypes = {
+  deleteComment: PropTypes.func.isRequired,
+  editComment: PropTypes.func.isRequired,
+  comments: PropTypes.arrayOf(commentPropTypes),
+};
+
+CommentsList.defaultProps = {
+  comments: null,
 };
 
 export default withLoader(CommentsList);
