@@ -67,15 +67,29 @@ export function createActionWithNotification(action) {
  * @export
  * @author Bhavik Patel
  */
+
 export function getActionType(category, method, status) {
   return `${method}_${category}_${status}`;
 }
 
 export const sortOrderMap = new Map();
 sortOrderMap.set('voteScore-desc', 'Most Voted');
-
 sortOrderMap.set('voteScore-asc', 'Least Voted');
 sortOrderMap.set('timestamp-desc', 'Latest Post First');
 sortOrderMap.set('timestamp-asc', 'Oldest Post First');
 sortOrderMap.set('commentCount-desc', 'Most Commented');
 sortOrderMap.set('commentCount-asc', 'Least Commented');
+
+// Generate a unique token for storing your bookshelf data on the backend server.
+function getToken() {
+  let { token } = localStorage;
+  if (!token) {
+    token = Math.random()
+      .toString(36)
+      .substr(-8);
+    localStorage.token = token;
+  }
+  return token;
+}
+
+export const appToken = getToken();

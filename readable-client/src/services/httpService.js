@@ -1,4 +1,4 @@
-import { getFullURL } from '../utils';
+import { getFullURL, appToken } from '../utils';
 /**
  * @function httpRequest
  * @description handles http calls
@@ -10,7 +10,7 @@ import { getFullURL } from '../utils';
  */
 export function httpRequest(url, options) {
   const defaultHeaders = {
-    Authorization: 'myauthtoken',
+    Authorization: appToken,
     'content-type': 'application/json',
   };
   const reqOptions = options
