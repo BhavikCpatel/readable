@@ -2,15 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { APP_TITLE, HEADER_COLOR } from '../constants';
+import AppRoutes from './AppRoutes';
 import loadCategories from '../actions/async/categoriesAsyncActions';
 import CategoryList from './category/CategoryList';
-import { Footer } from './ui';
-import '../styles/App.css';
-import AppRoutes from './AppRoutes';
+import Footer from './ui/Footer';
 import NotificationToast from './ui/NotificationToast';
 import Header from './ui/Header';
 import Drawer from './ui/Drawer';
-import { APP_TITLE, HEADER_COLOR } from '../constants';
+import '../styles/App.css';
 
 class App extends React.Component {
   static propTypes = {
