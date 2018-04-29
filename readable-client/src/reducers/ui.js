@@ -4,6 +4,22 @@ import {
   STATUS as ACTION_STATUS,
 } from '../constants';
 
+/* UI specific Reducer */
+const ui = (state = { orderBy: 'timestamp', orderType: 'desc' }, action) => {
+  if (action.category !== ACTION_CATEGORY.UI) {
+    return state;
+  }
+
+  switch (action.method) {
+    case ACTION_METHOD.ORDER:
+      return processSortOrderAction(state, action);
+    case ACTION_METHOD.NOTIFICATION:
+      return processUiNotificationAction(state, action);
+    default:
+      return state;
+  }
+};
+
 function processSortOrderAction(state, action) {
   return Object.assign({}, state, {
     postSortOrder: { orderBy: action.orderBy, orderType: action.orderType },
@@ -21,33 +37,10 @@ function processUiNotificationAction(state, action) {
           },
         });
       }
-      return state; /* else {
-      return Object.assign({}, state, {
-        notification:  undefined })
-      
-    } */
-    /* case ACTION_STATUS.CLOSE:
-      return Object.assign({}, state, {
-        notification: null,
-      }); */
+      return state;
     default:
       return state;
   }
 }
-
-const ui = (state = { orderBy: 'timestamp', orderType: 'desc' }, action) => {
-  if (action.category !== ACTION_CATEGORY.UI) {
-    return state;
-  }
-
-  switch (action.method) {
-    case ACTION_METHOD.ORDER:
-      return processSortOrderAction(state, action);
-    case ACTION_METHOD.NOTIFICATION:
-      return processUiNotificationAction(state, action);
-    default:
-      return state;
-  }
-};
 
 export default ui;

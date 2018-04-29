@@ -4,11 +4,12 @@ import {
   STATUS as ACTION_STATUS,
 } from '../constants';
 
+/* Comments Reducer */
 const comments = (state = {}, action) => {
   if (action.category !== ACTION_CATEGORY.COMMENT) {
     return state;
   }
-
+  /* Process Action using Action.method */
   switch (action.method) {
     case ACTION_METHOD.VOTE:
       return processPostVoteAction(state, action);
@@ -24,6 +25,7 @@ const comments = (state = {}, action) => {
       return state;
   }
 };
+
 
 function updateVoteScore(data, updatedObj) {
   return data.map(

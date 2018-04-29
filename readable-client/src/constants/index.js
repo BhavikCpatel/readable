@@ -4,6 +4,11 @@ export const HEADER_COLOR = 'blue-500';
 // API Server URL
 export const BASE_URL = 'http://localhost:3001';
 
+/*
+Note: Redux Action Type would be based on CATEGORY, METHOD and STATUS
+Action.type format is "METHOD_CATEGORY_STATUS"
+e.g. GET_POST_REQUEST, GET_POST_FAILED, ADD_POST_REQUEST etc.
+*/
 // Action Category: This is based on application features
 export const CATEGORY = {
   POST_CATEGORY: 'POST_CATEGORY',
@@ -20,7 +25,6 @@ export const METHOD = {
   DELETE: 'DELETE',
   VOTE: 'VOTE',
   ORDER: 'ORDER',
-  GETALL: 'GETALL',
   FIND_BY_ID: 'FIND_BY_ID',
   SET_COMMENT_CNT: 'SET_COMMENT_CNT',
   NOTIFICATION: 'NOTIFICATION',

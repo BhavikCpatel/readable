@@ -1,16 +1,21 @@
 import * as Action from '../constants';
 import { createAction, createActionWithNotification } from '../utils';
+/* Post Comments Action Creators */
 
+/* Action Creator for GET_COMMENT_REQUEST */
 export const requestPostComments = createAction(
   Action.CATEGORY.COMMENT,
   Action.METHOD.GET,
   Action.STATUS.REQUEST,
 );
+/* Action Creator for GET_COMMENT_SUCCEEDED */
 export const postCommentsReceived = createAction(
   Action.CATEGORY.COMMENT,
   Action.METHOD.GET,
   Action.STATUS.SUCCEEDED,
 );
+
+/* Action Creator for GET_COMMENT_FAILED with UI Notification message */
 export const postCommentsFailed = createActionWithNotification(
   createAction(
     Action.CATEGORY.COMMENT,
@@ -24,12 +29,16 @@ export const postCommentsFailed = createActionWithNotification(
   }),
 );
 
+/* Delete comments Action Creators */
+
+/* Action Creator for DELETE_COMMENT_REQUEST */
 export const requestDeleteComment = createAction(
   Action.CATEGORY.COMMENT,
   Action.METHOD.DELETE,
   Action.STATUS.REQUEST,
 );
 
+/* Action Creator for DELETE_COMMENT_SUCCEEDED with UI Notification message */
 export const deleteCommentSucceeded = createActionWithNotification(
   createAction(
     Action.CATEGORY.COMMENT,
@@ -42,7 +51,7 @@ export const deleteCommentSucceeded = createActionWithNotification(
     },
   }),
 );
-
+/* Action Creator for DELETE_COMMENT_FAILED with UI Notification message */
 export const deleteCommentFailed = createActionWithNotification(
   createAction(
     Action.CATEGORY.COMMENT,
@@ -56,12 +65,14 @@ export const deleteCommentFailed = createActionWithNotification(
   }),
 );
 
+/* Edit Comment Action Creators */
+/* Action Creator for EDIT_COMMENT_REQUEST */
 export const requestEditComment = createAction(
   Action.CATEGORY.COMMENT,
   Action.METHOD.EDIT,
   Action.STATUS.REQUEST,
 );
-
+/* Action Creator for EDIT_COMMENT_SUCCEEDED with UI Notification message */
 export const editCommentSucceeded = createActionWithNotification(
   createAction(
     Action.CATEGORY.COMMENT,
@@ -74,7 +85,7 @@ export const editCommentSucceeded = createActionWithNotification(
     },
   }),
 );
-
+/* Action Creator for EDIT_COMMENT_FAILED with UI Notification message */
 export const editCommentFailed = createActionWithNotification(
   createAction(
     Action.CATEGORY.COMMENT,
@@ -88,12 +99,14 @@ export const editCommentFailed = createActionWithNotification(
   }),
 );
 
+/* Add Comment Action Creator */
+/* Action Creator for ADD_COMMENT_REQUEST */
 export const requestAddComment = createAction(
   Action.CATEGORY.COMMENT,
   Action.METHOD.ADD,
   Action.STATUS.REQUEST,
 );
-
+/* Action Creator for ADD_COMMENT_SUCCEEDED with UI Notification message */
 export const addCommentSucceeded = createActionWithNotification(
   createAction(
     Action.CATEGORY.COMMENT,
@@ -106,7 +119,7 @@ export const addCommentSucceeded = createActionWithNotification(
     },
   }),
 );
-
+/* Action Creator for ADD_COMMENT_FAILED with UI Notification message */
 export const addCommentFailed = createActionWithNotification(
   createAction(
     Action.CATEGORY.COMMENT,
@@ -119,6 +132,9 @@ export const addCommentFailed = createActionWithNotification(
     },
   }),
 );
+
+/* Action Creator to update Comment counts */
+/* Action Creator for SET_COMMENT_CNT_POST_REQUEST with UI Notification message */
 export const requestSetCommentCnt = createAction(
   Action.CATEGORY.POST,
   Action.METHOD.SET_COMMENT_CNT,
