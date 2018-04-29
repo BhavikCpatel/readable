@@ -13,20 +13,21 @@ import {
   addCommentSucceeded,
   addCommentFailed,
 } from '../commentsActions';
-import * as api from '../../services/commentsApi';
+import * as commentApi from '../../services/commentsApi';
 
+/* Async thunk action to get comments by post */
 export const getCommentsByPost = postId => dispatch => {
   dispatch(requestPostComments({ postId }));
-  api
+  commentApi
     .getCommentsByPost(postId, postCommentsReceived, postCommentsFailed)
     .then(action => {
       dispatch(Object.assign({}, action, { postId }));
     });
 };
-
+/* Async thunk action to delete comment */
 export const deleteComment = commentId => dispatch => {
   dispatch(requestDeleteComment({ commentId }));
-  api
+  commentApi
     .deleteComment(commentId, deleteCommentSucceeded, deleteCommentFailed)
     .then(action => {
       dispatch(action);
@@ -38,10 +39,10 @@ export const deleteComment = commentId => dispatch => {
       }
     });
 };
-
+/* Async thunk action to edit/update comment */
 export const editComment = comment => dispatch => {
   dispatch(requestEditComment(comment));
-  return api
+  return commentApi
     .updateComment(comment, editCommentSucceeded, editCommentFailed)
     .then(action => {
       dispatch(action);
@@ -50,10 +51,10 @@ export const editComment = comment => dispatch => {
         : Promise.resolve(comment.id);
     });
 };
-
+/* Async thunk action to add a new comment */
 export const addComment = comment => dispatch => {
   dispatch(requestAddComment(comment));
-  return api
+  return commentApi
     .saveComment(comment, addCommentSucceeded, addCommentFailed)
     .then(action => {
       dispatch(action);

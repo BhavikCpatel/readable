@@ -3,14 +3,17 @@ import {
   postCategoryReceived,
   postCategoryFailed,
 } from '../categoriesActions';
-import * as api from '../../services/generalApi';
-// async thunk action
+import * as generalApi from '../../services/generalApi';
+
+// async thunk action to get categories
 const loadCategories = () => dispatch => {
   dispatch(requestPostCategory());
-  api.getCategories(postCategoryReceived, postCategoryFailed).then(action => {
-    // console.log('CAT LOAD', action);
-    dispatch(action);
-  });
+  generalApi
+    .getCategories(postCategoryReceived, postCategoryFailed)
+    .then(action => {
+      // console.log('CAT LOAD', action);
+      dispatch(action);
+    });
 };
 
 export default loadCategories;
