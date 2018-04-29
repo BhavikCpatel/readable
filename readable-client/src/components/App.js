@@ -6,9 +6,10 @@ import loadCategories from '../actions/async/categoriesAsyncActions';
 import CategoryList from './category/CategoryList';
 import { Footer } from './ui';
 import '../styles/App.css';
-import AppRoutes from './ui/AppRoutes';
+import AppRoutes from './AppRoutes';
 import NotificationToast from './ui/NotificationToast';
 import Header from './ui/Header';
+import Drawer from './ui/Drawer';
 import { APP_TITLE, HEADER_COLOR } from '../constants';
 
 class App extends React.Component {
@@ -56,6 +57,11 @@ class App extends React.Component {
             <Header appTitle={APP_TITLE} color={HEADER_COLOR}>
               <CategoryList categories={this.props.categories} />
             </Header>
+            <Drawer
+              appTitle={APP_TITLE}
+              color={HEADER_COLOR}
+              items={this.props.categories}
+            />
             {this.props.notification && (
               <NotificationToast
                 message={this.props.notification.message}

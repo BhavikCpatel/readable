@@ -1,5 +1,5 @@
 import React from 'react';
-import Loader from '../components/ui/Loader';
+import Loader from '../ui/Loader';
 
 const withLoader = (WrappedComponent, loadingMessage) => props =>
   props.isLoading ? (

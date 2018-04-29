@@ -5,7 +5,7 @@ import Post from './Post';
 import AddPostButton from './AddPostButton';
 import PostsOrderMenu from './PostsOrderMenu';
 import { sortOrderMap } from '../../utils';
-import withLoader from '../../utils/withLoader';
+import withLoader from '../containers/withLoader';
 
 const PostsList = ({
   posts,

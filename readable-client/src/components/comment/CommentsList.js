@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { commentPropTypes } from '../../utils/propTypesDefs';
 import Comment from './Comment';
-import withLoader from '../../utils/withLoader';
+import withLoader from '../containers/withLoader';
 
 const CommentsList = props => {
   if (props.comments && props.comments.length > 0) {

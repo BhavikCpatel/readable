@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Drawer from '../ui/Drawer';
 import NavBar from '../ui/NavBar';
-import { APP_TITLE, HEADER_COLOR } from '../../constants';
 
 class CategoryList extends React.Component {
   static propTypes = {
@@ -26,11 +24,6 @@ class CategoryList extends React.Component {
       categories && (
         <React.Fragment>
           <NavBar items={categories.data} />
-          <Drawer
-            appTitle={APP_TITLE}
-            color={HEADER_COLOR}
-            items={categories.data}
-          />
         </React.Fragment>
       )
     );

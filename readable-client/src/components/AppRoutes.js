@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import PostsListContainer from '../containers/PostsListContainer';
-import PostDetailContainer from '../containers/PostDetailContainer';
-import PostFormContainer from '../containers/PostFormContainer';
-import PathNotFound from './PathNotFound';
+import PostsListContainer from './containers/PostsListContainer';
+import PostDetailContainer from './containers/PostDetailContainer';
+import PostFormContainer from './containers/PostFormContainer';
+import PathNotFound from './ui/PathNotFound';
 
 const AppRoutes = () => (
   <main className="mdl-layout__content">

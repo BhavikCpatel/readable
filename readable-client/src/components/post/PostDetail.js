@@ -5,7 +5,7 @@ import PostCommentsContainer from '../containers/PostCommentsContainer';
 import PostCard from './PostCard';
 import AddPostButton from './AddPostButton';
 import ColoredButton from '../ui/ColoredButton';
-import withLoader from '../../utils/withLoader';
+import withLoader from '../containers/withLoader';
 
 const PostDetail = ({ post, deletePost, history, error }) => {
   if (error) {
