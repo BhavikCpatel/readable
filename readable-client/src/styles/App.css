@@ -1,55 +1,18 @@
-.app-mobile-title {
-  display: none !important;
-}
-
-/*.app-header {
-  overflow: visible;
-} */
-.mdl-layout__content {
-  flex: 1 0 auto;
-}
-.app-title {
-  font-size: 24px;
-  font-style: italic;
-}
-.app-title-footer {
-  color: white;
-  font-size: 18px;
-  margin-top: 8px;
-}
-.app-navigation-container .mdl-navigation__link:hover {
-  border-bottom: 3px solid #f3aa66;
-  color: hsl(61, 98%, 55%);
-}
-
-.icon-style {
-  filter: opacity(90%);
-}
-
-.icon-style:hover {
-  filter: contrast(190%);
-}
-
+/* Main Container */
 .page-content {
   padding: 18px 0;
   max-width: 1044px;
   margin: 0 auto;
 }
 
-section .posts-container {
-  display: flex;
-  flex-direction: row;
-}
-
+/* App Notification */
 .notification-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 12px;
-}
-.notification-container {
   position: fixed;
-  bottom: 50px;
+  top: 80px;
   margin: auto;
   min-width: 200px;
   align-self: center;
@@ -78,26 +41,14 @@ section .posts-container {
   background-color: rgba(255, 183, 0, 0.9);
   border: 1px solid rgba(255, 183, 0, 0.9);
 }
-#comment-form .mdl-card__menu {
-  top: 6px;
-  right: 6px;
-}
-#comment-form .mdl-card__supporting-text {
-  padding-bottom: 2px;
+
+/* Post Section - List Page */
+section .posts-container {
+  display: flex;
+  flex-direction: row;
 }
 
-#post-form .mdl-card__menu {
-  top: 6px;
-  right: 6px;
-}
-/*.post-card .mdl-card__media {
-  overflow: hidden;
-  height: 48px;
-  background-color: #596b70;
-  color: #fff;
-  padding-top: 12px;
-} */
-
+/* Post Sections Header for Comment Lists, Post Category, Post Form */
 .section-header {
   overflow: hidden;
   height: 48px;
@@ -105,18 +56,11 @@ section .posts-container {
   color: #fff;
   padding-top: 12px;
 }
-
 .section-header .title-text {
   margin-left: 12px;
 }
 
-.post-contents {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin-bottom: 20px;
-  max-height: 120px;
-}
-
+/* Post */
 .post-card .mdl-card__menu {
   position: absolute;
   right: 3px;
@@ -124,7 +68,6 @@ section .posts-container {
   color: #fff;
   opacity: 0.7;
 }
-
 .post-card .mdl-card__supporting-text {
   display: flex;
   flex-direction: column;
@@ -134,71 +77,16 @@ section .posts-container {
   padding: 12px;
   padding-bottom: 50px;
 }
-#vote-down {
-  margin-left: 3px;
+.post-contents {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 20px;
+  max-height: 120px;
 }
-.post-comments-section .mdl-card__supporting-text {
-  padding-bottom: 0;
-}
-
-.comments-list .mdl-list__item--three-line {
-  height: auto;
-  min-height: 84px;
-}
-
-.comments-list .mdl-list__item-primary-content {
-  height: auto;
-  min-height: 60px;
-}
-
-.comments-list .mdl-list__item-secondary-content {
-  display: flex;
-  flex-direction: row;
-  height: inherit;
-}
-
-.comments-list .mdl-list__item-text-body {
-  height: inherit;
-}
-
-.comments-list .mdl-list__item {
-  align-items: center;
-  justify-content: center;
-}
-
-.comments-list .vote-comment {
-  display: inline-flex;
-  flex-direction: row;
-  width: auto;
-  align-items: center;
-  justify-content: center;
-  padding-right: 30px;
-}
-
-.material-icons.mdl-badge[data-badge]::after {
-  top: -0.7em;
-  right: -1em;
-}
-
-.vote.mdl-badge[data-badge]::after {
-  background-color: orange;
-}
-
-.material-icons.mdl-badge[data-badge]::after {
-  background-color: orange;
-}
-
-.mdl-mini-footer__right-section {
-  max-height: 36px;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
 .post-card .post-comment-cnt {
   line-height: 2em;
   vertical-align: top;
 }
-
 .post-card .mdl-card__actions {
   display: flex;
   padding: 4px;
@@ -208,27 +96,10 @@ section .posts-container {
   position: absolute;
   bottom: 0;
 }
-#comment-form .mdl-card__supporting-text {
-  height: auto;
-  margin-bottom: 46px;
+#post-form .mdl-card__menu {
+  top: 6px;
+  right: 6px;
 }
-
-.app-header .material-icons {
-  color: rgba(185, 189, 231, 0.98) !important;
-}
-
-.app-drawer .mdl-layout-title {
-  background-color: #a7baf5;
-}
-
-.app-footer {
-  padding: 12px;
-}
-
-.large-textfield {
-  width: 100%;
-}
-
 .post-form .mdl-card__supporting-text {
   width: 94%;
 }
@@ -244,67 +115,88 @@ section .posts-container {
 .post-form .mdl-card__title {
   color: white;
 }
+
 .post-form .mdl-grid,
 .comment-form .mdl-cell {
   padding: 2px;
 }
+
 .post-form .mdl-cell,
 .comment-form .mdl-cell {
   margin: 1px;
 }
-
 .post-form .mdl-textfield {
   padding: 0;
   padding-bottom: 20px;
 }
-
-.comment-form .mdl-textfield {
-  padding: 4px 0;
-}
-.btn {
-  border: 0;
-  font-size: 14px;
-  font-weight: 500px;
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-}
-li.menu-item:hover {
-  background-color: pink;
-}
-
 .post-form .mdl-grid {
   align-items: center;
   justify-content: center;
 }
+/* Post Comments */
+.post-comments-section .mdl-card__supporting-text {
+  padding-bottom: 0;
+}
 
+/* Comment List */
+.comments-list .mdl-list__item--three-line {
+  height: auto;
+  min-height: 84px;
+}
+.comments-list .mdl-list__item-primary-content {
+  height: auto;
+  min-height: 60px;
+}
+.comments-list .mdl-list__item-secondary-content {
+  display: flex;
+  flex-direction: row;
+  height: inherit;
+}
+.comments-list .mdl-list__item-text-body {
+  height: inherit;
+}
+.comments-list .mdl-list__item {
+  align-items: center;
+  justify-content: center;
+}
+.comments-list .vote-comment {
+  display: inline-flex;
+  flex-direction: row;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  padding-right: 30px;
+}
+
+/* Comment Form */
+#comment-form .mdl-card__menu {
+  top: 6px;
+  right: 6px;
+}
+#comment-form .mdl-card__supporting-text {
+  padding-bottom: 2px;
+}
+#comment-form .mdl-card__supporting-text {
+  height: auto;
+  margin-bottom: 46px;
+}
+.comment-form .mdl-textfield {
+  padding: 4px 0;
+}
+
+/* Vote */
+#vote-down {
+  margin-left: 3px;
+}
+.vote.mdl-badge[data-badge]::after {
+  background-color: orange;
+}
+
+/* For Screen with Max width: 900px */
 @media (max-width: 900px) {
-  .app-navigation-container {
-    display: none;
-  }
-  .app-title {
-    display: none !important;
-  }
-  .app-mobile-title {
-    display: block !important;
-    font-size: 24px;
-    font-style: italic;
-    position: absolute;
-    left: calc(50% - 60px);
-    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
   .comment-detail {
     display: flex;
     flex-direction: column;
     margin: auto;
-  }
-  /*.material-icons {
-    font-size: 20px;
-  } */
-}
-
-@media (max-width: 300px) {
-  .app-mobile-title {
-    font-size: 16px;
-    position: absolute;
-    left: 56px;
   }
 }

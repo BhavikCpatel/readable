@@ -1,3 +1,4 @@
+/* Layout Common */
 body {
   margin: 0;
   padding: 0;
@@ -12,7 +13,6 @@ body {
   background-color: #dcedc8;
   color: #111;
 }
-
 ::selection {
   background-color: #dcedc8;
   color: #111;
@@ -23,13 +23,96 @@ a:visited {
   color: rgb(158, 158, 158);
   text-decoration-line: none;
 }
-
 a:hover {
   color: #faf8f8fa;
   text-decoration-line: none;
 }
 a:active {
   color: rgb(158, 158, 158);
-
   text-decoration-line: none;
+}
+.icon-style {
+  filter: opacity(90%);
+}
+.icon-style:hover {
+  filter: contrast(190%);
+}
+.large-textfield {
+  width: 100%;
+}
+li.menu-item:hover {
+  background-color: pink;
+}
+/* Spectre CSS Specific */
+.btn {
+  border: 0;
+  font-size: 14px;
+  font-weight: 500px;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+/* MDL Specific */
+.app-mobile-title {
+  display: none !important;
+}
+.mdl-layout__content {
+  flex: 1 0 auto;
+}
+.material-icons.mdl-badge[data-badge]::after {
+  top: -0.7em;
+  right: -1em;
+  background-color: orange;
+}
+.mdl-mini-footer__right-section {
+  max-height: 36px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* App Layout specific */
+.app-title {
+  font-size: 24px;
+  font-style: italic;
+}
+.app-title-footer {
+  color: white;
+  font-size: 18px;
+  margin-top: 8px;
+}
+.app-navigation-container .mdl-navigation__link:hover {
+  border-bottom: 3px solid #f3aa66;
+  color: hsl(61, 98%, 55%);
+}
+.app-header .material-icons {
+  color: rgba(185, 189, 231, 0.98) !important;
+}
+.app-drawer .mdl-layout-title {
+  background-color: #a7baf5;
+}
+.app-footer {
+  padding: 12px;
+}
+/* Media Query for Screen with Max Width : 900px */
+@media (max-width: 900px) {
+  .app-navigation-container {
+    display: none;
+  }
+  .app-title {
+    display: none !important;
+  }
+  .app-mobile-title {
+    display: block !important;
+    font-size: 24px;
+    font-style: italic;
+    position: absolute;
+    left: calc(50% - 60px);
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+@media (max-width: 300px) {
+  .app-mobile-title {
+    font-size: 16px;
+    position: absolute;
+    left: 56px;
+  }
 }
