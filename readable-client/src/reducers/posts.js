@@ -129,7 +129,26 @@ function processDeletePostAction(state, action) {
 }
 
 function processAddPostAction(state, action) {
-  return state;
+  switch (action.status) {
+    case ACTION_STATUS.REQUEST:
+      // Update Loading Status
+      return Object.assign({}, state, {
+        isLoading: true,
+      });
+    case ACTION_STATUS.SUCCEEDED:
+      return Object.assign({}, state, {
+        data: [...state.data, action.payload],
+        error: null,
+        isLoading: false,
+      });
+    case ACTION_STATUS.FAILED:
+      return Object.assign({}, state, {
+        isLoading: false,
+        error: action.error,
+      });
+    default:
+      return state;
+  }
 }
 
 function processSetCommentCountAction(state, action) {
@@ -158,6 +177,8 @@ const posts = (state = {}, action) => {
     return processEditPostAction(state, action);
   } else if (action.method === ACTION_METHOD.GET) {
     return processGetPostsAction(state, action);
+  } else if (action.method === ACTION_METHOD.ADD) {
+    return processAddPostAction(state, action);
   }
   return state;
 };
