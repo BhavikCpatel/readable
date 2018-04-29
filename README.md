@@ -15,7 +15,7 @@ To get started developing right away:
 
 ### API Server:
 
-* Install and start the API server
+* Install and start the API server (running on http://localhost:3001)
   * `cd api-server`
   * `npm install` or `yarn install`
   * `npm start` or `yarn start`
@@ -30,3 +30,7 @@ To get started developing right away:
   * `npm start` or `yarn start`
 
   Information about the Client App and how to use it can be found in its [README file](readable-client/README.md).
+
+If everything goes well, you should see an app running on a new browser window, however, in any case if it doesn't start automatically, you can navigate app using 'http://localhost:3000' in your favorite browser.
+
+All the best!
