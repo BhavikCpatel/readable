@@ -4,6 +4,32 @@ import {
   STATUS as ACTION_STATUS,
 } from '../constants';
 
+/* Post Reducer */
+const posts = (state = {}, action) => {
+  if (action.category !== ACTION_CATEGORY.POST) {
+    return state;
+  }
+
+  switch (action.method) {
+    case ACTION_METHOD.VOTE:
+      return processPostVoteAction(state, action);
+    case ACTION_METHOD.SET_COMMENT_CNT:
+      return processSetCommentCountAction(state, action);
+    case ACTION_METHOD.DELETE:
+      return processDeletePostAction(state, action);
+    case ACTION_METHOD.FIND_BY_ID:
+      return processFindPostByIdAction(state, action);
+    case ACTION_METHOD.EDIT:
+      return processEditPostAction(state, action);
+    case ACTION_METHOD.GET:
+      return processGetPostsAction(state, action);
+    case ACTION_METHOD.ADD:
+      return processAddPostAction(state, action);
+    default:
+      return state;
+  }
+};
+
 function updateVoteScore(data, updatedObj) {
   return data.map(
     obj =>
@@ -14,7 +40,6 @@ function updateVoteScore(data, updatedObj) {
 }
 
 function processPostVoteAction(state, action) {
-  // if (category !== action.voteCategory) return state;
   switch (action.status) {
     case ACTION_STATUS.SUCCEEDED:
       if (action.payload.id) {
@@ -161,26 +186,5 @@ function processSetCommentCountAction(state, action) {
     ),
   });
 }
-
-const posts = (state = {}, action) => {
-  if (action.category !== ACTION_CATEGORY.POST) {
-    return state;
-  } else if (action.method === ACTION_METHOD.VOTE) {
-    return processPostVoteAction(state, action);
-  } else if (action.method === ACTION_METHOD.SET_COMMENT_CNT) {
-    return processSetCommentCountAction(state, action);
-  } else if (action.method === ACTION_METHOD.DELETE) {
-    return processDeletePostAction(state, action);
-  } else if (action.method === ACTION_METHOD.FIND_BY_ID) {
-    return processFindPostByIdAction(state, action);
-  } else if (action.method === ACTION_METHOD.EDIT) {
-    return processEditPostAction(state, action);
-  } else if (action.method === ACTION_METHOD.GET) {
-    return processGetPostsAction(state, action);
-  } else if (action.method === ACTION_METHOD.ADD) {
-    return processAddPostAction(state, action);
-  }
-  return state;
-};
 
 export default posts;
