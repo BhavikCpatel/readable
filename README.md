@@ -8,22 +8,25 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 To get started developing right away:
 
-### API Server
-*  Install and start the API server
-    - `cd api-server`
-    - `npm install`
-    - `node server`
+1.  Clone this repo using "clone" or download ZIP directly from Github and extract
+2.  `cd` into project root folder
+3.  Follow the instructions given below in "API Server" and "Client" section respectively.
+4.  Once done with the steps, you should be able to see app running in your default browser.
 
+### API Server:
+
+* Install and start the API server
+  * `cd api-server`
+  * `npm install` or `yarn install`
+  * `npm start` or `yarn start`
     Information about the API server and how to use it can be found in its [README file](api-server/README.md).
-    
 
 ### Client:
+
 * Install and start the client App (Client App is scaffold using create-react-app)
-    - `cd readable-client`
-    - `npm install`
-    - `npm start`
 
-    Information about the Client App and how to use it can be found in its [README file](readable-client/README.md).
+  * `cd readable-client`
+  * `npm install` or `yarn install`
+  * `npm start` or `yarn start`
 
-
-
+  Information about the Client App and how to use it can be found in its [README file](readable-client/README.md).
