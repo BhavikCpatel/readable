@@ -36,7 +36,7 @@ This project was created using Udacity's React Nanodegree MyReads project templa
 * Redux DevTools Extension
 * Redux Middleware - Custom Middleware for Notification
 
-## :microphone: Javascript ES6 - Features Used\
+## :microphone: Javascript ES6 - Features Used
 
 * Default Parameters
 * Destructuring Assignment
@@ -47,7 +47,7 @@ This project was created using Udacity's React Nanodegree MyReads project templa
 * Default Parameters
 * Block-Scoped Constructs Let and Const
 
-## Libraries/Packages used
+## Libraries/Packages Used
 
 This project uses the following libraries/packages
 
@@ -71,11 +71,13 @@ Development devDependencies:
 3.  eslint-config (airbnb, prettier)
 4.  eslint-plugin (import, jsx-a11y, prettier, react)
 
+## Project Structure:
+
 ## License:
 
 MIT
 
-## Acknowledgments
+## Acknowledgments:
 
 Big thanks to the following:
 
