@@ -5,12 +5,12 @@ import { registerVote } from '../../actions/async/generalAsyncActions';
 import VoteCard from '../ui/VoteCard';
 import { CATEGORY } from '../../constants';
 
-const VoteCardContainer = ({ voteCategory, id, voteScore, registerVote }) => (
+const VoteCardContainer = props => (
   <VoteCard
-    voteCategory={voteCategory}
-    id={id}
-    voteScore={voteScore}
-    registerVote={registerVote}
+    voteCategory={props.voteCategory}
+    id={props.id}
+    voteScore={props.voteScore}
+    registerVote={props.registerVote}
   />
 );
 
