@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header, Drawer } from '../ui';
+import Drawer from '../ui/Drawer';
+import NavBar from '../ui/NavBar';
 import { APP_TITLE, HEADER_COLOR } from '../../constants';
 
 class CategoryList extends React.Component {
@@ -24,15 +25,11 @@ class CategoryList extends React.Component {
     return (
       categories && (
         <React.Fragment>
-          <Header
-            appTitle={APP_TITLE}
-            color={HEADER_COLOR}
-            items={categories}
-          />
+          <NavBar items={categories.data} />
           <Drawer
             appTitle={APP_TITLE}
             color={HEADER_COLOR}
-            items={categories}
+            items={categories.data}
           />
         </React.Fragment>
       )

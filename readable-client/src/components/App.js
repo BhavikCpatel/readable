@@ -8,6 +8,8 @@ import { Footer } from './ui';
 import '../styles/App.css';
 import AppRoutes from './ui/AppRoutes';
 import NotificationToast from './ui/NotificationToast';
+import Header from './ui/Header';
+import { APP_TITLE, HEADER_COLOR } from '../constants';
 
 class App extends React.Component {
   static propTypes = {
@@ -51,7 +53,9 @@ class App extends React.Component {
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <BrowserRouter>
           <React.Fragment>
-            <CategoryList categories={this.props.categories} />
+            <Header appTitle={APP_TITLE} color={HEADER_COLOR}>
+              <CategoryList categories={this.props.categories} />
+            </Header>
             {this.props.notification && (
               <NotificationToast
                 message={this.props.notification.message}
