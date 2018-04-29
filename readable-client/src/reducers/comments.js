@@ -3,7 +3,7 @@ import {
   METHOD as ACTION_METHOD,
   STATUS as ACTION_STATUS,
 } from '../constants';
-
+import processVoteActionByCategory from './vote';
 /* Comments Reducer */
 const comments = (state = {}, action) => {
   if (action.category !== ACTION_CATEGORY.COMMENT) {
@@ -12,7 +12,11 @@ const comments = (state = {}, action) => {
   /* Process Action using Action.method */
   switch (action.method) {
     case ACTION_METHOD.VOTE:
-      return processPostVoteAction(state, action);
+      return processVoteActionByCategory(
+        ACTION_CATEGORY.COMMENT,
+        state,
+        action,
+      );
     case ACTION_METHOD.GET:
       return processGetCommentsAction(state, action);
     case ACTION_METHOD.DELETE:
@@ -25,40 +29,6 @@ const comments = (state = {}, action) => {
       return state;
   }
 };
-
-
-function updateVoteScore(data, updatedObj) {
-  return data.map(
-    obj =>
-      obj.id === updatedObj.id
-        ? Object.assign({}, obj, { voteScore: updatedObj.voteScore })
-        : obj,
-  );
-}
-
-function processPostVoteAction(state, action) {
-  switch (action.status) {
-    case ACTION_STATUS.SUCCEEDED:
-      if (action.payload.id) {
-        // update votescore
-        return Object.assign({}, state, {
-          data: Object.assign({}, state.data, {
-            [action.payload.parentId]: updateVoteScore(
-              state.data[action.payload.parentId],
-              action.payload,
-            ),
-          }),
-        });
-      }
-      return state;
-    case ACTION_STATUS.FAILED:
-      // Will handle this failed action in error notification reducer
-      // TODO: handle failed action { what to do? }
-      return state;
-    default:
-      return state;
-  }
-}
 
 function processGetCommentsAction(state, action) {
   switch (action.status) {
