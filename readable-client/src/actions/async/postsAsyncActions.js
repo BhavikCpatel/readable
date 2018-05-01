@@ -29,14 +29,18 @@ export const getPostsByCategory = category => dispatch => {
 export const getPostById = id => dispatch => {
   // console.log('getting post', id);
   dispatch(requestPostById({ id }));
-  postApi
+  return postApi
     .getPostById(id, postByIdReceived, postByIdFailed)
-    .then(action => dispatch(action));
+    .then(action => {
+      dispatch(action);
+      const { error, payload = {} } = action;
+      return error || !payload.id ? Promise.reject(id) : Promise.resolve(id);
+    });
 };
 /* Async thunk action to delete post by Id */
 export const deletePost = (postId, callback) => dispatch => {
   dispatch(requestDeletePost({ postId }));
-  postApi
+  return postApi
     .deletePost(postId, deletePostSucceeded, deletePostFailed)
     .then(action => {
       if (callback) {
@@ -44,6 +48,7 @@ export const deletePost = (postId, callback) => dispatch => {
       }
 
       dispatch(action);
+      return action.error ? Promise.reject(postId) : Promise.resolve(postId);
     });
 };
 

@@ -10,24 +10,44 @@ class PostsDetailContainer extends React.Component {
   static propTypes = {
     post: postPropTypes,
     postId: PropTypes.string.isRequired,
-    isLoading: PropTypes.bool,
     error: PropTypes.string,
     deletePost: PropTypes.func.isRequired,
     getPostById: PropTypes.func.isRequired,
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   static defaultProps = {
     post: null,
-    isLoading: false,
     error: null,
   };
   componentDidMount() {
+    /*
+    Redirect use to 404 in case if Post doesn't exist
+    */
     if (!this.props.post && this.props.postId) {
-      this.props.getPostById(this.props.postId);
+      this.props
+        .getPostById(this.props.postId)
+        .catch(() => this.props.history.push('/error/404'));
     }
   }
+
+  /*
+    onDeletePostHandler: used to Redirect user when Post is deleted successfully.
+  */
+  onDeletePostHandler(postId) {
+    this.props.deletePost(postId).then(() => this.props.history.push('/'));
+  }
   render() {
-    return <PostDetail {...this.props} />;
+    return (
+      <PostDetail
+        post={this.props.post}
+        deletePost={postId => this.onDeletePostHandler(postId)}
+        history={this.props.history}
+        error={this.props.error}
+      />
+    );
   }
 }
 const mapStateToProps = ({ posts }, ownProps) => {

@@ -8,7 +8,6 @@ import {
   deletePost,
 } from '../../actions/async/postsAsyncActions';
 import { orderPosts } from '../../actions/async/generalAsyncActions';
-
 import PostsList from '../post/PostsList';
 
 class PostsListContainer extends React.Component {
@@ -24,6 +23,10 @@ class PostsListContainer extends React.Component {
       orderBy: PropTypes.string.isRequired,
       orderType: PropTypes.string.isRequired,
     }).isRequired,
+    categoryFound: PropTypes.bool.isRequired,
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired,
+    }).isRequired,
   };
   static defaultProps = {
     error: null,
@@ -34,6 +37,12 @@ class PostsListContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    /*
+    Redirect user to 404 in case if category doesn't exist
+    */
+    if (!this.props.categoryFound) {
+      this.props.history.push('/error/404');
+    }
     if (this.props.filterByCategory !== prevProps.filterByCategory) {
       this.loadPostsByCategory(this.props.filterByCategory);
     }
@@ -59,9 +68,24 @@ class PostsListContainer extends React.Component {
   }
 }
 
+// Filter Posts by category
 const filterPostsByCategory = (posts, category) =>
   category ? posts.filter(post => post.category === category) : posts;
 
+// Check if route category is valid or not
+// used to redirect invalid category request to 404
+const isValidCategory = (categoryList, currentCategory) => {
+  if (currentCategory) {
+    const index = categoryList.findIndex(
+      category => category.name === currentCategory,
+    );
+
+    return !(index < 0);
+  }
+  return true;
+};
+
+// Order posts
 const withOrder = (posts, postSortOrder) => {
   const sortOrder = postSortOrder.orderType === 'desc' ? 1 : -1;
   const { orderBy } = postSortOrder;
@@ -69,18 +93,25 @@ const withOrder = (posts, postSortOrder) => {
     .slice()
     .sort((postA, postB) => sortOrder * (postB[orderBy] - postA[orderBy]));
 };
-const mapStateToProps = ({ posts, ui }, ownProps) => {
+
+const mapStateToProps = ({ posts, ui, categories }, ownProps) => {
+  // Get category from route params
+  let postCategory = ownProps.match.params.category;
+  postCategory = postCategory === 'all' ? '' : postCategory;
+
+  // Filter and order posts
   const filteredAndOrderPosts = withOrder(
-    filterPostsByCategory(posts.data || [], ownProps.match.params.category),
+    filterPostsByCategory(posts.data || [], postCategory),
     ui.postSortOrder,
   );
-
+  // return props
   return {
     posts: filteredAndOrderPosts,
-    filterByCategory: ownProps.match.params.category || 'all',
+    filterByCategory: postCategory || 'all',
     isLoading: posts.isLoading,
     error: posts.error,
     postSortOrder: ui.postSortOrder,
+    categoryFound: isValidCategory(categories.data, postCategory),
   };
 };
 

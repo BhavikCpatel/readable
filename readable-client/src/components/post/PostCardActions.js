@@ -5,7 +5,13 @@ import VoteCardContainer from '../containers/VoteCardContainer';
 import IconButton from '../ui/IconButton';
 import { CATEGORY } from '../../constants';
 
-const PostCardActions = ({ postId, voteScore, deletePost, isDetailCard }) => (
+const PostCardActions = ({
+  category,
+  postId,
+  voteScore,
+  deletePost,
+  isDetailCard,
+}) => (
   <React.Fragment>
     <div className="mdl-card__actions mdl-card--border">
       {isDetailCard ? (
@@ -16,7 +22,11 @@ const PostCardActions = ({ postId, voteScore, deletePost, isDetailCard }) => (
           value=" Edit"
         />
       ) : (
-        <LinkButton id="read-more" path={`/post/${postId}`} value="More" />
+        <LinkButton
+          id="read-more"
+          path={`/${category}/${postId}`}
+          value="More"
+        />
       )}
       <div className="mdl-layout-spacer" />
       <VoteCardContainer
@@ -37,6 +47,7 @@ const PostCardActions = ({ postId, voteScore, deletePost, isDetailCard }) => (
 );
 
 PostCardActions.propTypes = {
+  category: PropTypes.string.isRequired,
   postId: PropTypes.string.isRequired,
   voteScore: PropTypes.number.isRequired,
   deletePost: PropTypes.func.isRequired,

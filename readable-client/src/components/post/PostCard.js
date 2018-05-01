@@ -13,6 +13,7 @@ const PostCard = ({ post, deletePost, isDetailCard, onCommentAdd }) =>
       <PostCardTitle title={post.title} />
       <PostContent post={post} isDetailCard={isDetailCard} />
       <PostCardActions
+        category={post.category}
         postId={post.id}
         voteScore={post.voteScore}
         isDetailCard={isDetailCard}
