@@ -40,11 +40,12 @@ class PostsListContainer extends React.Component {
     /*
     Redirect user to 404 in case if category doesn't exist
     */
-    if (!this.props.categoryFound) {
-      this.props.history.push('/error/404');
-    }
+
     if (this.props.filterByCategory !== prevProps.filterByCategory) {
       this.loadPostsByCategory(this.props.filterByCategory);
+    }
+    if (!this.props.categoryFound) {
+      this.props.history.push('/error/404');
     }
   }
 
@@ -75,7 +76,7 @@ const filterPostsByCategory = (posts, category) =>
 // Check if route category is valid or not
 // used to redirect invalid category request to 404
 const isValidCategory = (categoryList, currentCategory) => {
-  if (currentCategory) {
+  if (currentCategory && categoryList.length) {
     const index = categoryList.findIndex(
       category => category.name === currentCategory,
     );
@@ -96,6 +97,7 @@ const withOrder = (posts, postSortOrder) => {
 
 const mapStateToProps = ({ posts, ui, categories }, ownProps) => {
   // Get category from route params
+
   let postCategory = ownProps.match.params.category;
   postCategory = postCategory === 'all' ? '' : postCategory;
 
@@ -104,6 +106,7 @@ const mapStateToProps = ({ posts, ui, categories }, ownProps) => {
     filterPostsByCategory(posts.data || [], postCategory),
     ui.postSortOrder,
   );
+
   // return props
   return {
     posts: filteredAndOrderPosts,
