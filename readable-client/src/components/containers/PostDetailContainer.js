@@ -16,6 +16,7 @@ class PostsDetailContainer extends React.Component {
     history: PropTypes.shape({
       push: PropTypes.func.isRequired,
     }).isRequired,
+    category: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -32,7 +33,12 @@ class PostsDetailContainer extends React.Component {
         .catch(() => this.props.history.push('/error/404'));
     }
   }
-
+  componentDidUpdate() {
+    if (this.props.post && this.props.post.category !== this.props.category) {
+      // to catch Smart users who try to change category with valid post Id
+      this.props.history.push('/error/404');
+    }
+  }
   /*
     onDeletePostHandler: used to Redirect user when Post is deleted successfully.
   */
@@ -51,12 +57,13 @@ class PostsDetailContainer extends React.Component {
   }
 }
 const mapStateToProps = ({ posts }, ownProps) => {
-  const { post_id } = ownProps.match.params;
-  const filteredPost = posts.data.filter(post => post.id === post_id);
+  const { category, post_id: postId } = ownProps.match.params;
+  const filteredPost = posts.data.filter(post => post.id === postId);
 
   return {
     post: filteredPost[0] || null,
-    postId: post_id,
+    category,
+    postId,
     isLoading: posts.isLoading,
     error: posts.error,
   };
