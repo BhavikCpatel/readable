@@ -18,7 +18,7 @@ const AppRoutes = () => (
         <Route exact path="/post/:postId" component={PostDetailContainer} />
         <Route
           exact
-          path="/:category/:postId"
+          path="/:category/:post_id"
           component={PostDetailContainer}
         />
         <Route component={PathNotFound} />

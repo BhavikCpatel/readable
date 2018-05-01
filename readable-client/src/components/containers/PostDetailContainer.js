@@ -51,12 +51,12 @@ class PostsDetailContainer extends React.Component {
   }
 }
 const mapStateToProps = ({ posts }, ownProps) => {
-  const { postId } = ownProps.match.params;
-  const filteredPost = posts.data.filter(post => post.id === postId);
+  const { post_id } = ownProps.match.params;
+  const filteredPost = posts.data.filter(post => post.id === post_id);
 
   return {
     post: filteredPost[0] || null,
-    postId,
+    postId: post_id,
     isLoading: posts.isLoading,
     error: posts.error,
   };
